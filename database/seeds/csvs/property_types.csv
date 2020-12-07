@@ -1,0 +1,7 @@
+id,category_id,property_name,filterable,sort,,
+1,1,Authors,0,1,,
+2,1,Cover Type,0,2,,
+3,1,Publisher,0,3,,
+4,1,Publication Date,0,4,,
+5,1,Pages,0,5,,
+6,1,Language,0,6,,
