@@ -17,8 +17,10 @@ Route::group(['prefix' => 'admin', 'middleware'=>'web', 'namespace' => '\Modules
 
     Route::get('/login', 'Auth\AdminLoginController@showLoginForm')->name('admin.login');
     Route::post('/login', 'Auth\AdminLoginController@login')->name('admin.post-login');
+
     Route::group(['middleware' => 'auth.admin'], function () {
         Route::get('/dashboard', 'AdminController@index')->name('admin.dashboard');
+        Route::get('/product-list', 'ProductController@index')->name('admin.product.list');
         Route::get('/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
     });
 
