@@ -4,6 +4,10 @@ namespace Modules\Admin\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
+use Modules\Admin\Repositories\Category\CategoryInterface;
+use Modules\Admin\Repositories\Category\CategoryRepository;
+use Modules\Admin\Repositories\Product\ProductInterface;
+use Modules\Admin\Repositories\Product\ProductRepository;
 
 class AdminServiceProvider extends ServiceProvider
 {
@@ -38,6 +42,8 @@ class AdminServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->register(RouteServiceProvider::class);
+        $this->app->singleton(ProductInterface::class, ProductRepository::class);
+        $this->app->singleton(CategoryInterface::class, CategoryRepository::class);
     }
 
     /**

@@ -31,27 +31,30 @@
                     </a>
                 </li>
                 <li class="nav-item menu-open">
-                    <a href="#" class="nav-link {{ (request()->is('admin/user')) ?  'active' : '' }}">
-                        <i class="nav-icon fas fa-user-alt"></i>
-                        <p> Khách hàng
-{{--                            <i class="right fas fa-angle-left"></i>--}}
+                    <a href="#" class="nav-link {{ (request()->is('admin/product-list')) ?  'active' : '' }}">
+                        <i class="nav-icon fas fa-box"></i>
+                        <p> Sản phẩm
+                            <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
-{{--                    <ul class="nav nav-treeview">--}}
-{{--                        <li class="nav-item">--}}
-{{--                            <a href="{{route('admin.user.list')}}" class="nav-link active">--}}
-{{--                                <i class="far fa-circle nav-icon"></i>--}}
-{{--                                <p>Danh sách khách hàng</p>--}}
-{{--                            </a>--}}
-{{--                        </li>--}}
-{{--                    </ul>--}}
+                    <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                            <a href="{{route('admin.product.list')}}" class="nav-link {{ (request()->is('admin/product-list')) ?  'active' : '' }}">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Danh sách sản phẩm</p>
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#" class="nav-link">
+                                <i class="far fa-circle nav-icon"></i>
+                                <p>Thêm sản phẩm mới</p>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
     </div>
-    <script>
-        $(".nav-link").
-    </script>
     <!-- /.sidebar -->
 </aside>
