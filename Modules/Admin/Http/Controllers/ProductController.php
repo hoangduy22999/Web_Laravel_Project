@@ -22,7 +22,6 @@ class ProductController extends Controller
      */
     public function index(Request $request)
     {
-//        if($request->get)
         $products = $this->productService->getListProducts();
         $categories = $this->productService->getCategories();
 
