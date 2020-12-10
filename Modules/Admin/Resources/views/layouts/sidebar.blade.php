@@ -31,7 +31,8 @@
                     </a>
                 </li>
                 <li class="nav-item menu-open">
-                    <a href="#" class="nav-link {{ (request()->is('admin/product-list')) ?  'active' : '' }}">
+                    <a href="#" class="nav-link
+                        {{ (request()->is('admin/product-list') || request()->is('admin/product-create')) ?  'active' : '' }}">
                         <i class="nav-icon fas fa-box"></i>
                         <p> Sản phẩm
                             <i class="right fas fa-angle-left"></i>
@@ -45,7 +46,7 @@
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="#" class="nav-link">
+                            <a href="{{route('admin.product.create')}}" class="nav-link {{ (request()->is('admin/product-create')) ?  'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>
                                 <p>Thêm sản phẩm mới</p>
                             </a>
