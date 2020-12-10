@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Modules\Web\Repositories\Category;
+namespace App\Repositories\Category;
 
 
 interface CategoryInterface

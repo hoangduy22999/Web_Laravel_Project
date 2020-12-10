@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Modules\Admin\Repositories\Property;
+namespace App\Repositories\Property;
 
 
 interface PropertyInterface

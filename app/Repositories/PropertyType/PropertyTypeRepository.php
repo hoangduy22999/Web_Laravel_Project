@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Modules\Admin\Repositories\PropertyType;
+namespace App\Repositories\PropertyType;
 
 
 use App\Entities\PropertyType;
