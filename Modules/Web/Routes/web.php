@@ -15,7 +15,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::group(['prefix' => '/', 'middleware'=>'web', 'namespace' => '\Modules\Web\Http\Controllers'], function() {
 
-    Route::get('/', 'WebController@index')->name('home');
+    Route::get('/', 'ProductController@index')->name('home');
+    Route::get('/product-detail/{id}', 'ProductController@showDetail')->name('product.detail');
 
     Route::group(['middleware' => 'web'], function () {
 

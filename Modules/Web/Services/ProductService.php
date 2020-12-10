@@ -25,4 +25,8 @@ class ProductService
         return $this->categoryInterface->getAll();
     }
 
+    public function getProductDetail($id) {
+        return $this->productInterface->getProductById($id);
+    }
+
 }

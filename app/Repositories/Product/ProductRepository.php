@@ -27,5 +27,10 @@ class ProductRepository extends BaseRepository implements AdminProductInterface,
     {
         return $this->_model->with(['category'])->paginate(PER_PAGE);
     }
+
+    public function getProductById($id)
+    {
+        return $this->_model->with(['category', 'properties'])->find($id);
+    }
 }
 
