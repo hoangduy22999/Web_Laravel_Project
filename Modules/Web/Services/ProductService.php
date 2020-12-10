@@ -4,21 +4,21 @@
 namespace Modules\Web\Services;
 
 
-use Modules\Web\Repositories\Category\CategoryInterface;
-use Modules\Web\Repositories\Product\ProductInterface;
+use App\Repositories\Category\CategoryInterface;
+use App\Repositories\Product\WebProductInterface;
 
 class ProductService
 {
     protected $productInterface;
     protected $categoryInterface;
 
-    public function __construct(ProductInterface $productInterface, CategoryInterface $categoryInterface) {
+    public function __construct(WebProductInterface $productInterface, CategoryInterface $categoryInterface) {
         $this->productInterface = $productInterface;
         $this->categoryInterface = $categoryInterface;
     }
 
     public function getListProducts() {
-        return $this->productInterface->getAll();
+        return $this->productInterface->getAllWithPaginate();
     }
 
     public function getCategories() {

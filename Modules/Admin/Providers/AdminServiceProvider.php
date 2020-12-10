@@ -3,16 +3,6 @@
 namespace Modules\Admin\Providers;
 
 use Illuminate\Support\ServiceProvider;
-use Modules\Admin\Repositories\Category\CategoryInterface;
-use Modules\Admin\Repositories\Category\CategoryRepository;
-use Modules\Admin\Repositories\Product\ProductInterface;
-use Modules\Admin\Repositories\Product\ProductRepository;
-use Modules\Admin\Repositories\Property\PropertyInterface;
-use Modules\Admin\Repositories\Property\PropertyRepository;
-use Modules\Admin\Repositories\PropertyType\PropertyTypeInterface;
-use Modules\Admin\Repositories\PropertyType\PropertyTypeRepository;
-use Modules\Admin\Repositories\Warehouse\WarehouseInterface;
-use Modules\Admin\Repositories\Warehouse\WarehouseRepository;
 
 class AdminServiceProvider extends ServiceProvider
 {
@@ -47,11 +37,6 @@ class AdminServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->register(RouteServiceProvider::class);
-        $this->app->singleton(ProductInterface::class, ProductRepository::class);
-        $this->app->singleton(CategoryInterface::class, CategoryRepository::class);
-        $this->app->singleton(PropertyTypeInterface::class, PropertyTypeRepository::class);
-        $this->app->singleton(PropertyInterface::class, PropertyRepository::class);
-        $this->app->singleton(WarehouseInterface::class, WarehouseRepository::class);
     }
 
     /**

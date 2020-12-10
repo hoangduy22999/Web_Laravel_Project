@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Modules\Admin\Repositories\Category;
+namespace App\Repositories\Category;
 
 
 use App\Entities\Category;

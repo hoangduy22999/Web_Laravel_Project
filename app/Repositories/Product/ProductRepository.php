@@ -1,13 +1,13 @@
 <?php
 
 
-namespace Modules\Admin\Repositories\Product;
+namespace App\Repositories\Product;
 
 
 use App\Entities\Product;
 use App\Repositories\BaseRepository;
 
-class ProductRepository extends BaseRepository implements ProductInterface
+class ProductRepository extends BaseRepository implements AdminProductInterface, WebProductInterface
 {
     /**
      * get model
@@ -21,6 +21,11 @@ class ProductRepository extends BaseRepository implements ProductInterface
     public function getAll()
     {
         return $this->_model->with(['quantity', 'category'])->get();
+    }
+
+    public function getAllWithPaginate()
+    {
+        return $this->_model->with(['category'])->paginate(PER_PAGE);
     }
 }
 

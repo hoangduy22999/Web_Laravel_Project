@@ -1,7 +1,7 @@
 <?php
 
 
-namespace Modules\Admin\Repositories\Warehouse;
+namespace App\Repositories\Warehouse;
 
 
 interface WarehouseInterface

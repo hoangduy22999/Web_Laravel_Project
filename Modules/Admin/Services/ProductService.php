@@ -4,11 +4,11 @@
 namespace Modules\Admin\Services;
 
 
-use Modules\Admin\Repositories\Category\CategoryInterface;
-use Modules\Admin\Repositories\Product\ProductInterface;
-use Modules\Admin\Repositories\Property\PropertyInterface;
-use Modules\Admin\Repositories\PropertyType\PropertyTypeInterface;
-use Modules\Admin\Repositories\Warehouse\WarehouseInterface;
+use App\Repositories\Category\CategoryInterface;
+use App\Repositories\Product\AdminProductInterface;
+use App\Repositories\Property\PropertyInterface;
+use App\Repositories\PropertyType\PropertyTypeInterface;
+use App\Repositories\Warehouse\WarehouseInterface;
 
 class ProductService
 {
@@ -19,7 +19,7 @@ class ProductService
     protected $warehouseInterface;
 
     public function __construct(
-        ProductInterface $productInterface,
+        AdminProductInterface $productInterface,
         CategoryInterface $categoryInterface,
         PropertyTypeInterface $propertyTypeInterface,
         PropertyInterface $propertyInterface,
