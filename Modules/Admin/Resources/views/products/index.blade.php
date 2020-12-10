@@ -154,7 +154,7 @@
                         "className": "text-center align-middle",
                         "width": "5%",
                         "render": ( data, type, row ) => {
-                            return `${row.quantity.quantity}`;
+                            return `${ row.quantity != null ? row.quantity.quantity : "0"}`;
                         },
                     },
                     {

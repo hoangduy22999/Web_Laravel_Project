@@ -4,7 +4,8 @@ namespace Modules\Admin\Http\Controllers;
 
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Routing\Controller;
-use Illuminate\Support\Facades\Request;
+use Illuminate\Http\Request;
+use Modules\Admin\Http\Requests\ProductCRUDRequest;
 use Modules\Admin\Services\ProductService;
 
 class ProductController extends Controller
@@ -26,5 +27,28 @@ class ProductController extends Controller
         $categories = $this->productService->getCategories();
 
         return view('admin::products.index', compact('products', 'categories'));
+    }
+
+    public function create(Request $request) {
+        $categories = $this->productService->getCategories();
+        return view('admin::products.create', compact('categories'));
+    }
+
+    public function postCreate(ProductCRUDRequest $request) {
+        $this->productService->createProduct($request->all());
+
+        return redirect()->route('admin.product.list');
+    }
+
+    public function renderPropertyForm(Request $request) {
+        if($request->ajax()) {
+            $categoryId = $request->get('category_id');
+            $propertyTypes = $this->productService->getPropertyTypeByCategoryId($categoryId);
+            $propertyForm = view('admin::products.property-form', compact('propertyTypes'))->render();
+            return response()->json(compact('propertyForm'));
+        } else {
+            return response()->json([]);
+        }
+
     }
 }
