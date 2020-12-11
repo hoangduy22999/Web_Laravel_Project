@@ -20,196 +20,160 @@
                         <span aria-hidden="true">Close <i class="fas fa-times ml-2"></i></span>
                     </button>
                 </div>
-
-                <div class="js-scrollbar u-sidebar__body mCustomScrollbar _mCS_1 mCS-autoHide mCS_no_scrollbar" style="position: relative; overflow: visible;">
-                    <div id="mCSB_1" class="mCustomScrollBox mCS-minimal-dark mCSB_vertical mCSB_outside" style="max-height: none;" tabindex="0">
-                        <div id="mCSB_1_container" class="mCSB_container mCS_y_hidden mCS_no_scrollbar_y" style="position: relative; top: 0; left: 0;" dir="ltr">
-                            <div class="u-sidebar__content u-header-sidebar__content">
-                                <form class="">
-                                    <div id="login" data-target-group="idForm">
-                                        <header class="border-bottom px-4 px-md-6 py-4">
-                                            <h2 class="font-size-3 mb-0 d-flex align-items-center"><i class="flaticon-user mr-3 font-size-5"></i>Account</h2>
-                                        </header>
-
-                                        <div class="p-4 p-md-6">
-                                            <div class="form-group mb-4">
-                                                <div class="js-form-message js-focus-state">
-                                                    <label id="signinEmailLabel" class="form-label" for="signinEmail">Username or email *</label>
-                                                    <input
-                                                        type="email"
-                                                        class="form-control rounded-0 height-4 px-4"
-                                                        name="email"
-                                                        id="signinEmail"
-                                                        placeholder="creativelayers088@gmail.com"
-                                                        aria-label="creativelayers088@gmail.com"
-                                                        aria-describedby="signinEmailLabel"
-                                                        required=""
-                                                    />
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group mb-4">
-                                                <div class="js-form-message js-focus-state">
-                                                    <label id="signinPasswordLabel" class="form-label" for="signinPassword">Password *</label>
-                                                    <input
-                                                        type="password"
-                                                        class="form-control rounded-0 height-4 px-4"
-                                                        name="password"
-                                                        id="signinPassword"
-                                                        placeholder=""
-                                                        aria-label=""
-                                                        aria-describedby="signinPasswordLabel"
-                                                        required=""
-                                                    />
-                                                </div>
-                                            </div>
-
-                                            <div class="d-flex justify-content-between mb-5 align-items-center">
-                                                <div class="js-form-message">
-                                                    <div class="custom-control custom-checkbox d-flex align-items-center text-muted">
-                                                        <input type="checkbox" class="custom-control-input" id="termsCheckbox" name="termsCheckbox" required="" />
-                                                        <label class="custom-control-label" for="termsCheckbox">
-                                                                    <span class="font-size-2 text-secondary-gray-700">
-                                                                        Remember me
-                                                                    </span>
-                                                        </label>
-                                                    </div>
-                                                </div>
-
-                                                <a
-                                                    class="js-animation-link text-dark font-size-2 t-d-u link-muted font-weight-medium"
-                                                    href="javascript:;"
-                                                    data-target="#forgotPassword"
-                                                    data-link-group="idForm"
-                                                    data-animation-in="fadeIn"
-                                                >
-                                                    Forgot Password?
-                                                </a>
-                                            </div>
-                                            <div class="mb-4d75">
-                                                <button type="submit" class="btn btn-block py-3 rounded-0 btn-dark">Sign In</button>
-                                            </div>
-                                            <div class="mb-2">
-                                                <a
-                                                    href="javascript:;"
-                                                    class="js-animation-link btn btn-block py-3 rounded-0 btn-outline-dark font-weight-medium"
-                                                    data-target="#signup"
-                                                    data-link-group="idForm"
-                                                    data-animation-in="fadeIn"
-                                                >
-                                                    Create Account
-                                                </a>
-                                            </div>
-                                        </div>
+                <div class="u-sidebar__content u-header-sidebar__content">
+                    <div id="login" data-target-group="idForm">
+                        <header class="border-bottom px-4 px-md-6 py-4">
+                            <h2 class="font-size-3 mb-0 d-flex align-items-center"><i class="flaticon-user mr-3 font-size-5"></i>Đăng nhập</h2>
+                        </header>
+                        <form id="loginForm" action="#" method="post">
+                            <div class="p-4 p-md-6">
+                                <div class="form-group mb-4">
+                                    <div class="form-group mb-4">
+                                        <p class="text-center" style="color: red" id="login-error"></p>
                                     </div>
 
-                                    <div id="signup" style="display: none; opacity: 0;" data-target-group="idForm">
-                                        <header class="border-bottom px-4 px-md-6 py-4">
-                                            <h2 class="font-size-3 mb-0 d-flex align-items-center"><i class="flaticon-resume mr-3 font-size-5"></i>Create Account</h2>
-                                        </header>
-
-                                        <div class="p-4 p-md-6">
-                                            <div class="form-group mb-4">
-                                                <div class="js-form-message js-focus-state">
-                                                    <label id="signinEmailLabel1" class="form-label" for="signinEmail1">Email *</label>
-                                                    <input
-                                                        type="email"
-                                                        class="form-control rounded-0 height-4 px-4"
-                                                        name="email"
-                                                        id="signinEmail1"
-                                                        placeholder="creativelayers088@gmail.com"
-                                                        aria-label="creativelayers088@gmail.com"
-                                                        aria-describedby="signinEmailLabel1"
-                                                        required=""
-                                                    />
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group mb-4">
-                                                <div class="js-form-message js-focus-state">
-                                                    <label id="signinPasswordLabel1" class="form-label" for="signinPassword1">Password *</label>
-                                                    <input
-                                                        type="password"
-                                                        class="form-control rounded-0 height-4 px-4"
-                                                        name="password"
-                                                        id="signinPassword1"
-                                                        placeholder=""
-                                                        aria-label=""
-                                                        aria-describedby="signinPasswordLabel1"
-                                                        required=""
-                                                    />
-                                                </div>
-                                            </div>
-
-                                            <div class="form-group mb-4">
-                                                <div class="js-form-message js-focus-state">
-                                                    <label id="signupConfirmPasswordLabel" class="form-label" for="signupConfirmPassword">Confirm Password *</label>
-                                                    <input
-                                                        type="password"
-                                                        class="form-control rounded-0 height-4 px-4"
-                                                        name="confirmPassword"
-                                                        id="signupConfirmPassword"
-                                                        placeholder=""
-                                                        aria-label=""
-                                                        aria-describedby="signupConfirmPasswordLabel"
-                                                        required=""
-                                                    />
-                                                </div>
-                                            </div>
-
-                                            <div class="mb-3">
-                                                <button type="submit" class="btn btn-block py-3 rounded-0 btn-dark">Create Account</button>
-                                            </div>
-                                            <div class="text-center mb-4">
-                                                <span class="small text-muted">Already have an account?</span>
-                                                <a class="js-animation-link small" href="javascript:;" data-target="#login" data-link-group="idForm" data-animation-in="fadeIn">Login </a>
-                                            </div>
-                                        </div>
+                                    <div class="js-form-message js-focus-state">
+                                        <label class="form-label">Email*</label>
+                                        <input type="email" class="form-control rounded-0 height-4 px-4" id="login-mail" name="email" required />
                                     </div>
+                                </div>
 
-                                    <div id="forgotPassword" style="display: none; opacity: 0;" data-target-group="idForm">
-                                        <header class="border-bottom px-4 px-md-6 py-4">
-                                            <h2 class="font-size-3 mb-0 d-flex align-items-center"><i class="flaticon-question mr-3 font-size-5"></i>Forgot Password?</h2>
-                                        </header>
-
-                                        <div class="p-4 p-md-6">
-                                            <div class="form-group mb-4">
-                                                <div class="js-form-message js-focus-state">
-                                                    <label id="signinEmailLabel3" class="form-label" for="signinEmail3">Email *</label>
-                                                    <input
-                                                        type="email"
-                                                        class="form-control rounded-0 height-4 px-4"
-                                                        name="email"
-                                                        id="signinEmail3"
-                                                        placeholder="creativelayers088@gmail.com"
-                                                        aria-label="creativelayers088@gmail.com"
-                                                        aria-describedby="signinEmailLabel3"
-                                                        required=""
-                                                    />
-                                                </div>
-                                            </div>
-
-                                            <div class="mb-3">
-                                                <button type="submit" class="btn btn-block py-3 rounded-0 btn-dark">Recover Password</button>
-                                            </div>
-                                            <div class="text-center mb-4">
-                                                <span class="small text-muted">Remember your password?</span>
-                                                <a class="js-animation-link small" href="javascript:;" data-target="#login" data-link-group="idForm" data-animation-in="fadeIn">Login </a>
-                                            </div>
-                                        </div>
+                                <div class="form-group mb-4">
+                                    <div class="js-form-message js-focus-state">
+                                        <label class="form-label">Mật khẩu *</label>
+                                        <input type="password" class="form-control rounded-0 height-4 px-4" id="login-pass" name="password" required />
                                     </div>
-                                </form>
+                                </div>
+
+                                <div class="mb-4d75">
+                                    <button type="submit" class="btn btn-block py-3 rounded-0 btn-dark">Đăng nhập</button>
+                                </div>
+                                <div class="mb-2">
+                                    <a href="javascript:;" class="js-animation-link btn btn-block py-3 rounded-0 btn-outline-dark font-weight-medium" data-target="#signup" data-link-group="idForm" data-animation-in="fadeIn">
+                                        Tạo tài khoản
+                                    </a>
+                                </div>
                             </div>
-                        </div>
+                        </form>
                     </div>
-                    <div id="mCSB_1_scrollbar_vertical" class="mCSB_scrollTools mCSB_1_scrollbar mCS-minimal-dark mCSB_scrollTools_vertical" style="display: none;">
-                        <div class="mCSB_draggerContainer">
-                            <div id="mCSB_1_dragger_vertical" class="mCSB_dragger" style="position: absolute; min-height: 50px; top: 0px;"><div class="mCSB_dragger_bar" style="line-height: 50px;"></div></div>
-                            <div class="mCSB_draggerRail"></div>
-                        </div>
+
+                    <div id="signup" style="display: none; opacity: 0;" data-target-group="idForm">
+                        <header class="border-bottom px-4 px-md-6 py-4">
+                            <h2 class="font-size-3 mb-0 d-flex align-items-center"><i class="flaticon-resume mr-3 font-size-5"></i>Tạo tài khoản</h2>
+                        </header>
+                        <form id="registerForm" action="#" method="post">
+                            <div class="p-4 p-md-6">
+                                <div class="form-group mb-4">
+                                    <div class="js-form-message js-focus-state">
+                                        <label class="form-label">Họ tên *</label>
+                                        <input type="text" class="form-control rounded-0 height-4 px-4" id="register-name" name="name" required="" />
+                                        <p id="register-name-error" style="color: red"></p>
+                                    </div>
+                                </div>
+
+                                <div class="form-group mb-4">
+                                    <div class="js-form-message js-focus-state">
+                                        <label class="form-label">Số điện thoại *</label>
+                                        <input type="text" class="form-control rounded-0 height-4 px-4" id="register-phonenumber" name="phone_number" required="" />
+                                        <p id="register-phonenumber-error" style="color: red"></p>
+                                    </div>
+                                </div>
+
+                                <div class="form-group mb-4">
+                                    <div class="js-form-message js-focus-state">
+                                        <label class="form-label">Email *</label>
+                                        <input type="email" class="form-control rounded-0 height-4 px-4" id="register-email" name="email" required />
+                                        <p id="register-mail-error" style="color: red"></p>
+                                    </div>
+                                </div>
+
+                                <div class="form-group mb-4">
+                                    <div class="js-form-message js-focus-state">
+                                        <label class="form-label">Mật khẩu *</label>
+                                        <input type="password" class="form-control rounded-0 height-4 px-4" id="register-pass" name="password" required />
+                                        <p id="register-pass-error" style="color: red"></p>
+                                    </div>
+                                </div>
+
+                                <div class="form-group mb-4">
+                                    <div class="js-form-message js-focus-state">
+                                        <label class="form-label">Mật khẩu (Xác nhận) *</label>
+                                        <input type="password" class="form-control rounded-0 height-4 px-4" id="register-rpass" name="re_password" required />
+                                        <p id="register-rpass-error" style="color: red"></p>
+                                    </div>
+                                </div>
+
+                                <div class="mb-3">
+                                    <button type="submit" class="btn btn-block py-3 rounded-0 btn-dark">Tạo tài khoản</button>
+                                </div>
+                                <div class="text-center mb-4">
+                                    <span class="small text-muted">Đã có tài khoản trước đó ?</span>
+                                    <a class="js-animation-link small" href="javascript:;" data-target="#login" data-link-group="idForm" data-animation-in="fadeIn">Đăng nhập </a>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    <script>
+        document.querySelector('form#loginForm').addEventListener('submit', (event) => {
+            event.preventDefault();
+            loginSubmit();
+        });
+
+        document.querySelector('form#registerForm').addEventListener('submit', (event) => {
+            event.preventDefault();
+            registerSubmit();
+        });
+
+        function loginSubmit(){
+            $.ajax({
+                url: "{{route('web.post-login')}}",
+                type:'post',
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    email: $('#login-mail').val(),
+                    password: $('#login-pass').val()
+                },
+                success:function (result){
+                    if(result.status === true) {
+                        location.reload();
+                    } else {
+                        $('#login-error').html("Email hoặc mật khẩu chưa chính xác");
+                        $('#login-mail').val(result.email);
+                        $('#login-pass').val("");
+                    }
+                }
+            });
+        }
+
+        function registerSubmit(){
+            $.ajax({
+                url: "{{route('web.post-register')}}",
+                type:'post',
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    email: $('#register-email').val(),
+                    name: $('#register-name').val(),
+                    phone_number: $('#register-phonenumber').val(),
+                    password: $('#register-pass').val(),
+                    re_password: $('#register-rpass').val()
+                },
+                success: function (result){
+                    location.reload();
+                },
+                error: function (result) {
+                    let errors = $.parseJSON(result.responseText).errors;
+                    if(errors.email) $('#register-mail-error').html(errors.email[0]);
+                    if(errors.name) $('#register-name-error').html(errors.name[0]);
+                    if(errors.phone_number) $('#register-phonenumber-error').html(errors.phone_number[0]);
+                    if(errors.password) $('#register-pass-error').html(errors.password[0]);
+                    if(errors.re_password) $('#register-rpass-error').html(errors.re_password[0]);
+                }
+            });
+        }
+
+    </script>
 </aside>

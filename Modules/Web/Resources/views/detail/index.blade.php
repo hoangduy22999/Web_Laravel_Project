@@ -33,8 +33,8 @@
                                                     <span class="fas fa-star"></span>
                                                     <span class="fas fa-star"></span>
                                                 </span>
-                                                <span class="ml-3 font-weight-medium">By </span>
-                                                <span class="ml-2 text-gray-600">Anna Banks</span>
+{{--                                                <span class="ml-3 font-weight-medium">By </span>--}}
+{{--                                                <span class="ml-2 text-gray-600">Anna Banks</span>--}}
                                             </div>
 
                                             <div>

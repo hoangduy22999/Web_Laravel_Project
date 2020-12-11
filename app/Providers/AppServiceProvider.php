@@ -2,6 +2,8 @@
 
 namespace App\Providers;
 
+use App\Repositories\Cart\CartInterface;
+use App\Repositories\Category\CartRepository;
 use App\Repositories\Category\CategoryInterface;
 use App\Repositories\Category\CategoryRepository;
 use App\Repositories\Product\AdminProductInterface;
@@ -11,6 +13,8 @@ use App\Repositories\Property\PropertyInterface;
 use App\Repositories\Property\PropertyRepository;
 use App\Repositories\PropertyType\PropertyTypeInterface;
 use App\Repositories\PropertyType\PropertyTypeRepository;
+use App\Repositories\User\UserInterface;
+use App\Repositories\User\UserRepository;
 use App\Repositories\Warehouse\WarehouseInterface;
 use App\Repositories\Warehouse\WarehouseRepository;
 use Illuminate\Support\ServiceProvider;
@@ -30,6 +34,8 @@ class AppServiceProvider extends ServiceProvider
         $this->app->singleton(PropertyInterface::class, PropertyRepository::class);
         $this->app->singleton(WarehouseInterface::class, WarehouseRepository::class);
         $this->app->singleton(CategoryInterface::class, CategoryRepository::class);
+        $this->app->singleton(CartInterface::class, CartRepository::class);
+        $this->app->singleton(UserInterface::class, UserRepository::class);
     }
 
     /**

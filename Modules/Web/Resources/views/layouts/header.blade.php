@@ -26,6 +26,7 @@
                     </form>
                 </div>
                 <div class="d-flex align-items-center mt-lg-3 mt-xl-0">
+                    @if(empty($user))
                     <a
                         id="sidebarNavToggler"
                         href="javascript:;"
@@ -54,37 +55,35 @@
                             </div>
                         </div>
                     </a>
-
-                    <a
-                        id="sidebarNavToggler1"
-                        href="javascript:;"
-                        role="button"
-                        class="ml-4 d-none d-lg-block target-of-invoker-has-unfolds"
-                        aria-controls="sidebarContent1"
-                        aria-haspopup="true"
-                        aria-expanded="false"
-                        data-unfold-event="click"
-                        data-unfold-hide-on-scroll="false"
-                        data-unfold-target="#sidebarContent1"
-                        data-unfold-type="css-animation"
-                        data-unfold-overlay='{
-                                "className": "u-sidebar-bg-overlay",
-                                "background": "rgba(0, 0, 0, .7)",
-                                "animationSpeed": 500
-                            }'
-                        data-unfold-animation-in="fadeInRight"
-                        data-unfold-animation-out="fadeOutRight"
-                        data-unfold-duration="500"
-                    >
-                        <div class="d-flex align-items-center text-white font-size-2 text-lh-sm position-relative">
-                            <span class="position-absolute width-16 height-16 rounded-circle d-flex align-items-center justify-content-center bg-dark-1 text-white font-size-n9 left-0 top-0 ml-n2 mt-n1">3</span>
-                            <i class="flaticon-icon-126515 font-size-4 text-secondary-black-100"></i>
-                            <div class="ml-2">
-                                {{--                                <span class="text-secondary-gray-1080 font-size-1">Giỏ hàng</span>--}}
-                                <div class="font-size-2 text-secondary-black-100">Giỏ hàng</div>
-                            </div>
+                    @else
+                        <div class="nav-item dropdown">
+                            <a id="pagesDropdownInvoker" href="#" class="dropdown-toggle nav-link link-black-100 mx-4 px-0 py-5 font-weight-medium d-flex align-items-center" aria-haspopup="true" aria-expanded="true" data-unfold-event="hover" data-unfold-target="#pagesDropdownMenu" data-unfold-type="css-animation" data-unfold-duration="200" data-unfold-delay="50" data-unfold-hide-on-scroll="true" data-unfold-animation-in="slideInUp" data-unfold-animation-out="fadeOut">
+                                <div class="d-flex align-items-center text-white font-size-2 text-lh-sm">
+                                    <i class="flaticon-user font-size-4 text-dark"></i>
+                                    <div class="ml-2 d-none d-lg-block">
+                                        <div class="text-secondary-black-100 font-size-2">{{$user->name}}</div>
+                                    </div>
+                                </div>
+                            </a>
+                            <ul id="pagesDropdownMenu" class="dropdown-unfold dropdown-menu font-size-2 rounded-0 border-gray-900 u-unfold--css-animation fadeOut" aria-labelledby="pagesDropdownInvoker" style="animation-duration: 200ms; left: 0px;">
+                                <li><a href="#" class="dropdown-item link-black-100">Lịch sử mua hàng</a></li>
+                                <li><a href="{{route('web.logout')}}" class="dropdown-item link-black-100">Đăng xuất</a></li>
+                            </ul>
                         </div>
-                    </a>
+                        <a
+                            href="javascript:;"
+                            class="ml-4 d-none d-lg-block target-of-invoker-has-unfolds"
+                        >
+                            <div class="d-flex align-items-center text-white font-size-2 text-lh-sm position-relative">
+                                <span class="position-absolute width-16 height-16 rounded-circle d-flex align-items-center justify-content-center bg-dark-1 text-white font-size-n9 left-0 top-0 ml-n2 mt-n1">3</span>
+                                <i class="flaticon-icon-126515 font-size-4 text-secondary-black-100"></i>
+                                <div class="ml-2">
+                                    <div class="font-size-2 text-secondary-black-100" id="giohang">Giỏ hàng</div>
+                                </div>
+                            </div>
+                        </a>
+                    @endif
+
                 </div>
             </div>
         </div>

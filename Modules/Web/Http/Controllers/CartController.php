@@ -7,10 +7,9 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\Web\Services\ProductService;
 
-class ProductController extends WebBaseController
+class CartController extends WebBaseController
 {
     protected $productService;
-
     public function __construct(ProductService $productService)
     {
         parent::__construct();
@@ -23,15 +22,10 @@ class ProductController extends WebBaseController
      */
     public function index()
     {
-        $products = $this->productService->getListProducts();
-        $categories = $this->productService->getCategories();
-        return view('web::home.index', compact('products', 'categories'));
+        return view('web::index');
     }
 
-    public function showDetail(Request $request, int $id){
-        $product = $this->productService->getProductDetail($id);
-        $categories = $this->productService->getCategories();
-        return view('web::detail.index', compact('categories', 'product'));
+    public function addProductToCart(Request $request) {
+        dd($request->all());
     }
 }
-
