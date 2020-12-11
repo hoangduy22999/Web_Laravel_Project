@@ -16,5 +16,10 @@ class WarehouseRepository extends BaseRepository implements WarehouseInterface
     {
         return Warehouse::class;
     }
+
+    function getQuantityRemaining($productId)
+    {
+        return $this->_model->where('product_id', $productId)->pluck('quantity');
+    }
 }
 

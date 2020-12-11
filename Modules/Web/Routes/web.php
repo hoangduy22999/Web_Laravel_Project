@@ -17,9 +17,12 @@ Route::group(['prefix' => '/', 'middleware'=>'web', 'namespace' => '\Modules\Web
 
     Route::get('/', 'ProductController@index')->name('home');
     Route::get('/product-detail/{id}', 'ProductController@showDetail')->name('product.detail');
+    Route::post('/login', 'Auth\LoginController@login')->name('web.post-login');
+    Route::post('/register', 'Auth\RegisterController@register')->name('web.post-register');
 
     Route::group(['middleware' => 'web'], function () {
-
+        Route::post('/add-cart', 'CartController@addProductToCart')->name('product.add-cart');
+        Route::get('/logout', 'Auth\LoginController@logout')->name('web.logout');
     });
 
 });
