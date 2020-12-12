@@ -1,10 +1,10 @@
-<header id="site-header" class="site-header__v9 site-header__white-text">
+<header id="site-header" class="site-header__v9 site-header__white-text fixed-top bg-carolina-light">
     <div class="masthead">
-        <div class="container pt-3 pt-md-4 pb-3 pb-md-5">
+        <div class="container pt-3 pb-3">
             <div class="d-flex align-items-center position-relative flex-wrap">
                 <div class="site-branding pr-7">
                     <a href="{{route('home')}}" class="d-block mb-1">
-                        <img width="80" height="80" src="https://www.massen.lu/wp-content/uploads/mediastore_logo_neu.jpg" />
+                        <img width="80" height="80" src="{{asset('web/images/logo.jpg')}}" />
                     </a>
                 </div>
                 <div class="site-search ml-xl-0 ml-md-auto w-r-100 flex-grow-1 mr-md-5 mt-2 mt-md-0 order-1 order-md-0">
@@ -75,7 +75,9 @@
                             class="ml-4 d-none d-lg-block target-of-invoker-has-unfolds"
                         >
                             <div class="d-flex align-items-center text-white font-size-2 text-lh-sm position-relative">
-                                <span class="position-absolute width-16 height-16 rounded-circle d-flex align-items-center justify-content-center bg-dark-1 text-white font-size-n9 left-0 top-0 ml-n2 mt-n1">3</span>
+                                <div id="cart-item">
+                                    @include('web::layouts.cart-item')
+                                </div>
                                 <i class="flaticon-icon-126515 font-size-4 text-secondary-black-100"></i>
                                 <div class="ml-2">
                                     <div class="font-size-2 text-secondary-black-100" id="giohang">Giỏ hàng</div>

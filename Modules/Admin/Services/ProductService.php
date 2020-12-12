@@ -9,6 +9,7 @@ use App\Repositories\Product\AdminProductInterface;
 use App\Repositories\Property\PropertyInterface;
 use App\Repositories\PropertyType\PropertyTypeInterface;
 use App\Repositories\Warehouse\WarehouseInterface;
+use Illuminate\Support\Facades\DB;
 
 class ProductService
 {
@@ -45,6 +46,7 @@ class ProductService
     }
 
     public function createProduct(array $data) {
+        DB::beginTransaction();
         $productInfo = [
             'title' => $data['title'],
             'category_id' => $data['category_id'],
@@ -67,6 +69,9 @@ class ProductService
                 ];
                 $this->propertyInterface->create($propertyInfo);
             }
+            DB::commit();
+        } else {
+            DB::rollBack();
         }
     }
 

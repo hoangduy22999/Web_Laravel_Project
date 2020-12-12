@@ -2,7 +2,7 @@
 
 @section("content")
 
-    <section class="mb-8">
+    <section class="mb-8 mt-14">
         <div class="container">
             <div class="pt-5 pb-5">
                 <div class="bg-img-hero img-fluid rounded-md" style="background-image: url({{asset('web/images/img1-bg.jpg')}});">
@@ -76,10 +76,10 @@
                                         </div>
                                     </div>
                                     <div class="product__hover d-flex align-items-center">
-                                        <a href="#" class="text-uppercase text-dark h-dark font-weight-medium">
+                                        <div  class="text-uppercase text-dark h-dark font-weight-medium" onclick="addCart({{$product->id}})">
                                             <span class="product__add-to-cart" style="font-size: 12px">Thêm vào giỏ hàng</span>
                                             <span class="product__add-to-cart-icon font-size-4"><i class="fas fa-cart-plus"></i></span>
-                                        </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -168,4 +168,24 @@
         </div>
     </section>
 
+    <script>
+        function addCart(id) {
+            $.ajax({
+                url: "{{route('product.add-cart')}}",
+                type:'post',
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    product_id: id,
+                    quantity: 1
+                },
+                success: function(result){
+                    if(result.status) {
+                        $('#cart-item').html(result.cartItem);
+                    } else {
+                        alert(result.message);
+                    }
+                },
+            });
+        }
+    </script>
 @endsection

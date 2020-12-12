@@ -1,7 +1,7 @@
 @extends("web::layouts.master")
 
 @section("content")
-    <div class="site-content" id="content">
+    <div class="site-content mt-14" id="content">
         <div class="container">
             <div class="row space-top-2 mb-10">
                 <div id="primary" class="content-area">
@@ -63,7 +63,7 @@
                                                 </span>
                                             </p>
 
-                                            <form class="cart d-md-flex align-items-center" method="post" enctype="multipart/form-data">
+                                            <div class="cart d-md-flex align-items-center" method="post" enctype="multipart/form-data">
                                                 <div class="quantity mb-4 mb-md-0 d-flex align-items-center">
                                                     <!-- Quantity -->
                                                     <div class="border px-3 width-120">
@@ -79,8 +79,8 @@
                                                     <!-- End Quantity -->
                                                 </div>
 
-                                                <button type="submit" name="add-to-cart" value="7145" class="btn btn-dark border-0 rounded-0 p-3 btn-block ml-md-4 single_add_to_cart_button button alt">Add to cart</button>
-                                            </form>
+                                                <button type="button" name="add-to-cart" onclick="addCart({{$product->id}})" class="btn btn-dark border-0 rounded-0 p-3 btn-block ml-md-4 single_add_to_cart_button button alt">Add to cart</button>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -93,6 +93,26 @@
     </div>
 
     <script>
+        function addCart(id) {
+            let currentQuantity = $("#quantity").val();
+            $.ajax({
+                url: "{{route('product.add-cart')}}",
+                type:'post',
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    product_id: id,
+                    quantity: currentQuantity
+                },
+                success: function(result){
+                    if(result.status) {
+                        $('#cart-item').html(result.cartItem);
+                    } else {
+                        alert(result.message);
+                    }
+                },
+            });
+        }
+
         $(document).ready(function() {
             $("#increment").click(function() {
                 let currentQuantity = $("#quantity").val();
