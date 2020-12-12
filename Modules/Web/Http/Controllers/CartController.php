@@ -17,6 +17,22 @@ class CartController extends WebBaseController
         $this->productService = $productService;
     }
 
+    public function showCart() {
+        $user = Auth::guard('web')->user();
+        if(empty($user)) {
+            return redirect()->route('home');
+        }
+        $itemsInCart = $this->cartService->getItemsAddByUser($user->id);
+        return view('web::cart.index', compact('itemsInCart'));
+    }
+
+    public function checkout() {
+        return view('web::checkout.index');
+    }
+
+    public function checkoutSuccess() {
+        return view('web::checkout.success');
+    }
 
     public function addProductToCart(Request $request) {
         $user = Auth::guard('web')->user();

@@ -40,4 +40,8 @@ class CartService
             $itemInCart->increment('quantity', $request->quantity);
         }
     }
+
+    public function getItemsAddByUser($userId) {
+        return $this->cartInterface->getItemsAddByUser($userId);
+    }
 }

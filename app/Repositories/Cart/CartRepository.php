@@ -26,4 +26,9 @@ class CartRepository extends BaseRepository implements CartInterface
     function getItemByConditions(array $conditions) {
         return $this->_model->where($conditions)->first();
     }
+
+    function getItemsAddByUser($userId)
+    {
+        return $this->_model->where('user_id', $userId)->with('product')->get();
+    }
 }

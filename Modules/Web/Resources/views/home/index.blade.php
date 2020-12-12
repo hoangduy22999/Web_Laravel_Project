@@ -28,11 +28,11 @@
                                                     data-scs-animation-delay="200"
                                                     style="animation-delay: 200ms; opacity: 1;"
                                                 >
-                                                    THE BOOKWORM EDITORS’
+                                                    THE AIMS SHOP EDITORS’
                                                 </p>
                                                 <h2 class="font-size-15 mb-3 pb-1 animated fadeInUp" data-scs-animation-in="fadeInUp" data-scs-animation-delay="300" style="animation-delay: 300ms; opacity: 1;">
-                                                    <span class="hero__title-line-1 font-weight-normal d-block">Feature Books Of The </span>
-                                                    <span class="hero__title-line-2 font-weight-bold d-block">Fabruary</span>
+                                                    <span class="hero__title-line-1 font-weight-normal d-block">Buy everything <br/>with</span>
+                                                    <span class="hero__title-line-2 font-weight-bold d-block">AIMS Shop</span>
                                                 </h2>
                                             </div>
                                         </div>
@@ -104,43 +104,13 @@
                         <div class="min mx-2">60</div>
                         <div class="sec mx-2">25</div>
                     </div>
-                    <a href="#v3.html" class="h-primary d-block ml-auto">View All <i class="glyph-icon flaticon-next"></i></a>
                 </header>
-                <div
-                    class="js-slick-carousel u-slick u-slick--gutters-3 products slick-initialized slick-slider slick-dotted"
-                    data-pagi-classes="text-center u-slick__pagination mt-7 position-absolute right-0 left-0"
-                    data-slides-show="3"
-                    data-responsive='[{
-                       "breakpoint": 1199,
-                       "settings": {
-                         "slidesToShow": 2
-                       }
-                    }, {
-                       "breakpoint": 992,
-                       "settings": {
-                         "slidesToShow": 1
-                       }
-                    }, {
-                       "breakpoint": 554,
-                       "settings": {
-                         "slidesToShow": 1
-                       }
-                    }]'
-                >
-                    <div class="slick-list draggable">
-                        <div class="slick-track" style="opacity: 1; width: 3346px; transform: translate3d(0px, 0px, 0px);">
-                            <div
-                                class="product product__card product__space product__space-primary border rounded-md bg-white slick-slide slick-current slick-active"
-                                data-slick-index="0"
-                                aria-hidden="false"
-                                style="width: 444.25px; height: auto;"
-                                tabindex="0"
-                                role="tabpanel"
-                                id="slick-slide10"
-                                aria-describedby="slick-slide-control10"
-                            >
+                <div class="row">
+                    <div class="slick-list col-6">
+                        <div class="slick-track">
+                            <div class="product product__card product__space product__space-primary border rounded-md bg-white">
                                 <div class="media p-3 p-md-4d875">
-                                    <a href="#single-product-v3.html" class="d-block" tabindex="0"><img src="{{asset('web/images/img1(5).jpg')}}" alt="image-description" /></a>
+                                    <a href="#" class="d-block" tabindex="0"><img src="{{asset('web/images/img1(5).jpg')}}" alt="image-description" /></a>
                                     <div class="media-body ml-4d875">
                                         <div class="text-uppercase font-size-1 mb-1 text-truncate"><a href="#single-product-v3.html" tabindex="0">Hard Cover</a></div>
                                         <h2 class="woocommerce-loop-product__title h6 text-lh-md mb-1 text-height-2 crop-text-2 h-dark">
@@ -152,7 +122,34 @@
                                         </div>
                                         <div class="deal-progress">
                                             <div class="d-flex justify-content-between font-size-2 mb-2d75">
-                                                <span>Already Sold: 14</span>
+                                                <span>Đã bán: 14</span>
+                                            </div>
+                                            <div class="progress height-7">
+                                                <div class="progress-bar bg-dark" role="progressbar" style="width: 82%;" aria-valuenow="14" aria-valuemin="0" aria-valuemax="17"></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slick-list col-6">
+                        <div class="slick-track">
+                            <div class="product product__card product__space product__space-primary border rounded-md bg-white">
+                                <div class="media p-3 p-md-4d875">
+                                    <a href="#" class="d-block" tabindex="0"><img src="{{asset('web/images/img1(5).jpg')}}" alt="image-description" /></a>
+                                    <div class="media-body ml-4d875">
+                                        <div class="text-uppercase font-size-1 mb-1 text-truncate"><a href="#single-product-v3.html" tabindex="0">Hard Cover</a></div>
+                                        <h2 class="woocommerce-loop-product__title h6 text-lh-md mb-1 text-height-2 crop-text-2 h-dark">
+                                            <a href="#single-product-v3.html" tabindex="0">The Rural Diaries: Love, Livestock, and Big Life Lessons Down on Mischief Farm</a>
+                                        </h2>
+                                        <div class="font-size-2 mb-1 text-truncate"><a href="#authors-single.html" class="text-gray-700" tabindex="0">Hillary Burton</a></div>
+                                        <div class="price d-flex align-items-center font-weight-medium font-size-3 mb-3">
+                                            <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">$</span>15</span>
+                                        </div>
+                                        <div class="deal-progress">
+                                            <div class="d-flex justify-content-between font-size-2 mb-2d75">
+                                                <span>Đã bán: 14</span>
                                             </div>
                                             <div class="progress height-7">
                                                 <div class="progress-bar bg-dark" role="progressbar" style="width: 82%;" aria-valuenow="14" aria-valuemin="0" aria-valuemax="17"></div>
