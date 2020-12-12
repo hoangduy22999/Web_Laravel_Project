@@ -10,3 +10,13 @@ if (!function_exists('format_currency')) {
         return $result;
     }
 }
+
+if (!function_exists('calculate_total_price')) {
+
+    function calculate_total_price($quantity, $price)
+    {
+        $total = (int) $quantity * (int) $price;
+        $result = format_currency($total);
+        return $result;
+    }
+}

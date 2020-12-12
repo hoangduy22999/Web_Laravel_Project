@@ -9,6 +9,7 @@
                 </div>
                 <div class="site-search ml-xl-0 ml-md-auto w-r-100 flex-grow-1 mr-md-5 mt-2 mt-md-0 order-1 order-md-0">
                     <form class="form-inline my-2 my-xl-0">
+                        @if(!empty($categories))
                         <div class="input-group input-group-borderless w-100">
                             <div class="input-group-prepend border-right mr-0 d-none d-xl-block">
                                 <select class="custom-select pr-7 pl-4 rounded-right-0 height-5 shadow-none border-0 text-dark bg-gray-200" id="inputGroupSelect01">
@@ -23,6 +24,7 @@
                                 <button class="btn btn-primary px-3 py-2" type="submit"><i class="mx-1 glph-icon flaticon-loupe text-white"></i></button>
                             </div>
                         </div>
+                        @endif
                     </form>
                 </div>
                 <div class="d-flex align-items-center mt-lg-3 mt-xl-0">
@@ -66,12 +68,12 @@
                                 </div>
                             </a>
                             <ul id="pagesDropdownMenu" class="dropdown-unfold dropdown-menu font-size-2 rounded-0 border-gray-900 u-unfold--css-animation fadeOut" aria-labelledby="pagesDropdownInvoker" style="animation-duration: 200ms; left: 0px;">
-                                <li><a href="#" class="dropdown-item link-black-100">Lịch sử mua hàng</a></li>
+                                <li><a href="{{route('account')}}" class="dropdown-item link-black-100">Tài khoản của tôi</a></li>
                                 <li><a href="{{route('web.logout')}}" class="dropdown-item link-black-100">Đăng xuất</a></li>
                             </ul>
                         </div>
                         <a
-                            href="javascript:;"
+                            href="{{route('product.show-cart')}}"
                             class="ml-4 d-none d-lg-block target-of-invoker-has-unfolds"
                         >
                             <div class="d-flex align-items-center text-white font-size-2 text-lh-sm position-relative">

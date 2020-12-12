@@ -11,4 +11,6 @@ interface CartInterface
     function getQuantityInCart($userId);
 
     function getItemByConditions(array $conditions);
+
+    function getItemsAddByUser($userId);
 }

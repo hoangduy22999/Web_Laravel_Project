@@ -22,6 +22,10 @@ Route::group(['prefix' => '/', 'middleware'=>'web', 'namespace' => '\Modules\Web
 
     Route::group(['middleware' => 'web'], function () {
         Route::post('/add-cart', 'CartController@addProductToCart')->name('product.add-cart');
+        Route::get('/cart', 'CartController@showCart')->name('product.show-cart');
+        Route::get('/checkout', 'CartController@checkout')->name('web.checkout');
+        Route::get('/checkout-success', 'CartController@checkoutSuccess')->name('web.checkout.success');
+        Route::get('/account', 'AccountController@index')->name('account');
         Route::get('/logout', 'Auth\LoginController@logout')->name('web.logout');
     });
 
