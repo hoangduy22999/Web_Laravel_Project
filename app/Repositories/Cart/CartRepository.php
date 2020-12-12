@@ -1,12 +1,11 @@
 <?php
 
 
-namespace App\Repositories\Category;
+namespace App\Repositories\Cart;
 
 
 use App\Entities\Cart;
 use App\Repositories\BaseRepository;
-use App\Repositories\Cart\CartInterface;
 
 class CartRepository extends BaseRepository implements CartInterface
 {
@@ -17,5 +16,14 @@ class CartRepository extends BaseRepository implements CartInterface
     public function getModel()
     {
         return Cart::class;
+    }
+
+    function getQuantityInCart($userId)
+    {
+        return $this->_model->where('user_id', $userId)->count();
+    }
+
+    function getItemByConditions(array $conditions) {
+        return $this->_model->where($conditions)->first();
     }
 }

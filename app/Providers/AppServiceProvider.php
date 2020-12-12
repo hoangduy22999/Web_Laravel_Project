@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use App\Repositories\Cart\CartInterface;
-use App\Repositories\Category\CartRepository;
+use App\Repositories\Cart\CartRepository;
 use App\Repositories\Category\CategoryInterface;
 use App\Repositories\Category\CategoryRepository;
 use App\Repositories\Product\AdminProductInterface;
