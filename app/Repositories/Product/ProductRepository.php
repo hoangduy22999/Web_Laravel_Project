@@ -32,5 +32,13 @@ class ProductRepository extends BaseRepository implements AdminProductInterface,
     {
         return $this->_model->with(['category', 'properties'])->find($id);
     }
+
+    function getListProductsWithKeyword($keyword, $categoryId = null)
+    {
+        $query = $this->_model;
+        if($categoryId) $query = $query->where('category_id', $categoryId);
+        $query = $query->where('title', 'like', "%".$keyword."%");
+        return $query->with(['category'])->paginate(PER_PAGE);
+    }
 }
 

@@ -49,9 +49,14 @@
     <section class="space-bottom-3">
         <div class="container">
             <header class="d-md-flex justify-content-between align-items-center mb-5">
-                <h2 class="font-size-7 mb-4 mb-md-0">Trending Media</h2>
+                @if(empty($keyword))
+                    <h2 class="font-size-7 mb-4 mb-md-0">Danh sách sản phẩm</h2>
+                @else
+                    <h2 class="font-size-7 mb-4 mb-md-0">Danh sách sản phẩm theo từ khóa: {{$keyword}}</h2>
+                @endif
             </header>
             <ul class="products list-unstyled mb-0 row row-cols-2 row-cols-md-3 row-cols-xl-4 row-cols-wd-5">
+                @if(count($products) > 0)
                 @foreach($products as $product)
                     <li class="col">
                         <div class="product product__space product__space-primary border rounded-md bg-white mb-5">
@@ -86,6 +91,11 @@
                         </div>
                     </li>
                 @endforeach
+                @else
+                    <header class="mb-4 container">
+                        <p class="font-size-5 text-center text-red-1">Không tìm thấy sản phẩm bạn mong muốn</p>
+                    </header>
+                @endif
             </ul>
             <nav>
                 {{$products->links()}}

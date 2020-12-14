@@ -17,6 +17,7 @@ Route::group(['prefix' => '/', 'middleware'=>'web', 'namespace' => '\Modules\Web
 
     Route::get('/', 'ProductController@index')->name('home');
     Route::get('/product-detail/{id}', 'ProductController@showDetail')->name('product.detail');
+    Route::get('/search', 'ProductController@search')->name('product.search');
     Route::post('/login', 'Auth\LoginController@login')->name('web.post-login');
     Route::post('/register', 'Auth\RegisterController@register')->name('web.post-register');
 
