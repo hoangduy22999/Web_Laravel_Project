@@ -13,8 +13,7 @@
 
                             <div class="entry-content">
                                 <div class="woocommerce">
-                                    <form class="woocommerce-cart-form table-responsive" action="#" method="post">
-                                        @csrf
+                                    <form id="list-items" class="woocommerce-cart-form table-responsive" action="#" method="post">
                                         <table class="shop_table shop_table_responsive cart woocommerce-cart-form__contents">
                                             <thead>
                                             <tr>
@@ -28,6 +27,8 @@
                                             <tbody>
                                             @foreach($itemsInCart as $item)
                                             <tr class="woocommerce-cart-form__cart-item cart_item">
+                                                <input type="hidden" id="product_id" name="item['product_id']" value="{{$item->product_id}}">
+                                                <input type="hidden" id="price" value="{{$item->product->price}}">
                                                 <td class="product-name" data-title="Product">
                                                     <div class="d-flex align-items-center">
                                                         <a href="#">
@@ -35,6 +36,7 @@
                                                         </a>
                                                         <div class="ml-3 m-w-200-lg-down">
                                                             <a href="{{route('product.detail', $item->product_id)}}">{{$item->product->title}}</a>
+                                                            <input type="hidden" name="item['title']" value="{{$item->product->title}}">
                                                         </div>
                                                     </div>
                                                 </td>
@@ -48,7 +50,7 @@
                                                             <div class="js-quantity">
                                                                 <div class="d-flex align-items-center">
                                                                     <span class="js-minus text-dark" onclick="decrementQuantity(this, {{$item->product_id}}, {{$item->product->price}})"><i class="fas fa-minus"></i></span>
-                                                                    <input type="text" class="input-text qty text js-result form-control text-center border-0" pattern="[\d]" id="quantity" name="quantity" value="{{$item->quantity}}" title="Qty" />
+                                                                    <input type="text" class="input-text qty text js-result form-control text-center border-0" id="quantity" pattern="\d+" name="item['quantity']" value="{{$item->quantity}}"/>
                                                                     <span class="js-plus text-dark" onclick="incrementQuantity(this, {{$item->product_id}},  {{$item->product->price}})"><i class="fas fa-plus"></i></span>
                                                                 </div>
                                                             </div>
@@ -56,11 +58,11 @@
 
                                                     </div>
                                                 </td>
-                                                <td class="product-subtotal" data-title="Total">
+                                                <td class="product-subtotal">
                                                     <span class="woocommerce-Price-amount amount" id="total-price-{{$item->product_id}}">{{\App\Helpers\calculate_total_price($item->quantity, $item->product->price)}}</span>
                                                 </td>
                                                 <td class="product-remove">
-                                                    <a href="#" class="remove" aria-label="Remove this item">
+                                                    <a href="#" class="remove" onclick="removeItem(this)">
                                                         <i class="fas fa-times"></i>
                                                     </a>
                                                 </td>
@@ -68,9 +70,7 @@
                                             @endforeach
                                             <tr>
                                                 <td colspan="5" class="actions">
-
-                                                    <input type="button" class="button" name="update_cart" value="Cập nhật giỏ hàng">
-                                                    <input type="hidden" id="_wpnonce" name="_wpnonce" value="db025d7a70"><input type="hidden" name="_wp_http_referer" value="/storefront/cart/">
+                                                    <input type="submit" class="button" value="Cập nhật giỏ hàng">
                                                 </td>
                                             </tr>
                                             </tbody>
@@ -90,7 +90,7 @@
                                     <th>Tổng số tiền</th>
                                     <td class="ml-4">
                                         <strong>
-                                            <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">£</span>97.99</span>
+                                            <span id="total-amount" class="woocommerce-Price-amount amount">{{\App\Helpers\format_currency($totalAmount)}}</span>
                                         </strong>
                                     </td>
                                 </tr>
@@ -106,11 +106,23 @@
         </div>
     </div>
     <script>
+        let totalAmount = {{$totalAmount}};
+
+        function changeInput(e) {
+            let root = $(e).parent();
+            let price = $(root).find("#price").val();
+            let quantity = $(root).find("#quantity").val();
+            totalAmount = totalAmount - quantity * price;
+            $('#total-amount').html(formatPrice(totalAmount));
+        }
+
         function incrementQuantity(e, product_id, price) {
             let inputEl = $(e).parent().children()[1];
             let quantity = parseInt($(inputEl).val()) + 1;
             $(inputEl).val(quantity);
             $('#total-price-' + product_id).html(formatPrice(quantity * price));
+            totalAmount = totalAmount + price;
+            $('#total-amount').html(formatPrice(totalAmount));
         }
 
         function decrementQuantity(e, product_id, price) {
@@ -119,6 +131,8 @@
             if(quantity > 0) {
                 $(inputEl).val(quantity);
                 $('#total-price-' + product_id).html(formatPrice(quantity * price));
+                totalAmount = totalAmount - price;
+                $('#total-amount').html(formatPrice(totalAmount));
             }
         }
 
@@ -127,8 +141,61 @@
             return nf.format(price) + "đ";
         }
 
-        $(document).ready(function() {
+        function removeItem(e) {
+            let root = $(e).parent().parent();
+            let productId = $(root).find("#product_id").val();
+            let price = $(root).find("#price").val();
+            let quantity = $(root).find("#quantity").val();
+            $.ajax({
+                url: "{{route('product.remove-item')}}",
+                type:'post',
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    product_id: productId,
+                },
+                success: function(result){
+                    if(result.status) {
+                        $(root).remove();
+                        totalAmount = totalAmount - quantity * price;
+                        $('#total-amount').html(formatPrice(totalAmount));
+                        $('#cart-item').html(result.cartItem);
+                    } else {
+                        alert(result.message);
+                    }
+                },
+            });
+        }
 
+        document.querySelector('form#list-items').addEventListener('submit', (event) => {
+            event.preventDefault();
+            let data = $('form#list-items').serializeArray();
+            let items = [];
+            for(var i = 0; i < data.length; i = i + 3) {
+                let item = {};
+                item['product_id'] = data[i].value;
+                item['title'] = data[i+1].value;
+                item['quantity'] = data[i+2].value;
+                items.push(item);
+            }
+            updateCartSubmit(items);
         });
+
+        function  updateCartSubmit(data) {
+            $.ajax({
+                url: "{{route('product.update-cart')}}",
+                type:'post',
+                data: {
+                    _token: '{{ csrf_token() }}',
+                    items: data,
+                },
+                success: function(result){
+                    if(result.status) {
+                        alert(result.message);
+                    } else {
+                        alert(result.message.toString());
+                    }
+                },
+            });
+        }
     </script>
 @endsection

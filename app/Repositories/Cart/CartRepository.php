@@ -31,4 +31,14 @@ class CartRepository extends BaseRepository implements CartInterface
     {
         return $this->_model->where('user_id', $userId)->with('product')->get();
     }
+
+    function removeItem(array $conditions)
+    {
+        return $this->_model->where($conditions)->delete();
+    }
+
+    function updateItem(array $conditions, array $data)
+    {
+        return $this->_model->where($conditions)->update($data);
+    }
 }

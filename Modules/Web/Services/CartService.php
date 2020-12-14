@@ -44,4 +44,23 @@ class CartService
     public function getItemsAddByUser($userId) {
         return $this->cartInterface->getItemsAddByUser($userId);
     }
+
+    public function removeItemInCart(Request $request, $user) {
+        $whereCondition = [
+            'product_id' => $request->get('product_id'),
+            'user_id' => $user->id
+        ];
+        return $this->cartInterface->removeItem($whereCondition);
+    }
+
+    public function updateCart($userId, $data) {
+        $whereCondition = [
+            'product_id' => $data->product_id,
+            'user_id' => $userId
+        ];
+        $updateData = [
+            'quantity' => $data->quantity
+        ];
+        $this->cartInterface->updateItem($whereCondition, $updateData);
+    }
 }

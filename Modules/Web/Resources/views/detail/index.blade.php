@@ -79,7 +79,7 @@
                                                     <!-- End Quantity -->
                                                 </div>
 
-                                                <button type="button" name="add-to-cart" onclick="addCart({{$product->id}})" class="btn btn-dark border-0 rounded-0 p-3 btn-block ml-md-4 single_add_to_cart_button button alt">Add to cart</button>
+                                                <button type="button" name="add-to-cart" onclick="addCart({{$product->id}})" class="btn btn-dark border-0 rounded-0 p-3 btn-block ml-md-4 single_add_to_cart_button button alt">Thêm vào giỏ hàng</button>
                                             </div>
                                         </div>
                                     </div>

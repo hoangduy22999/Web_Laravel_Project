@@ -13,4 +13,8 @@ interface CartInterface
     function getItemByConditions(array $conditions);
 
     function getItemsAddByUser($userId);
+
+    function removeItem(array $conditions);
+
+    function updateItem(array $conditions, array $data);
 }
