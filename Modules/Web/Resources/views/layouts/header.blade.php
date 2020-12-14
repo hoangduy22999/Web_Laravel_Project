@@ -8,18 +8,18 @@
                     </a>
                 </div>
                 <div class="site-search ml-xl-0 ml-md-auto w-r-100 flex-grow-1 mr-md-5 mt-2 mt-md-0 order-1 order-md-0">
-                    <form class="form-inline my-2 my-xl-0">
+                    <form class="form-inline my-2 my-xl-0" action="{{route('product.search')}}" method="get">
                         @if(!empty($categories))
                         <div class="input-group input-group-borderless w-100">
                             <div class="input-group-prepend border-right mr-0 d-none d-xl-block">
-                                <select class="custom-select pr-7 pl-4 rounded-right-0 height-5 shadow-none border-0 text-dark bg-gray-200" id="inputGroupSelect01">
-                                    <option selected="">Toàn bộ</option>
+                                <select class="custom-select pr-7 pl-4 rounded-right-0 height-5 shadow-none border-0 text-dark bg-gray-200" name="category_id">
+                                    <option value="">Toàn bộ</option>
                                     @foreach($categories as $category)
-                                        <option value="{{$category->id}}">{{$category->name}}</option>
+                                        <option value="{{$category->id}}" @if(!empty($categoryId) && $category->id == $categoryId) selected @endif>{{$category->name}}</option>
                                     @endforeach
                                 </select>
                             </div>
-                            <input type="text" class="form-control px-3 bg-gray-200 bg-focus__1" placeholder="Nhập từ khóa" aria-label="Amount (to the nearest dollar)" />
+                            <input type="text" class="form-control px-3 bg-gray-200 bg-focus__1" placeholder="Nhập từ khóa" name="keyword" value="{{$keyword ?? ""}}" />
                             <div class="input-group-append">
                                 <button class="btn btn-primary px-3 py-2" type="submit"><i class="mx-1 glph-icon flaticon-loupe text-white"></i></button>
                             </div>

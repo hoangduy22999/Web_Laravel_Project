@@ -86,7 +86,7 @@
 
         function renderData(data) {
             let table = $('#product-table').DataTable( {
-                "searching": false,
+                "searching": true,
                 "info": false,
                 "paging": true,
                 "lengthChange": false,

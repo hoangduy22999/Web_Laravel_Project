@@ -33,5 +33,13 @@ class ProductController extends WebBaseController
         $categories = $this->productService->getCategories();
         return view('web::detail.index', compact('categories', 'product'));
     }
+
+    public function search(Request $request) {
+        $categoryId = $request->get('category_id');
+        $keyword = $request->get('keyword');
+        $categories = $this->productService->getCategories();
+        $products = $this->productService->getListProductByKeyword($request);
+        return view('web::home.index', compact('products', 'categories', 'categoryId', 'keyword'));
+    }
 }
 
