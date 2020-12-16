@@ -1,4 +1,4 @@
-<header id="site-header" class="site-header__v9 site-header__white-text fixed-top bg-carolina-light">
+<header id="site-header" class="site-header__v9 site-header__white-text fixed-top bg-carolina-light" style="z-index:130;">
     <div class="masthead">
         <div class="container pt-3 pb-3">
             <div class="d-flex align-items-center position-relative flex-wrap">
