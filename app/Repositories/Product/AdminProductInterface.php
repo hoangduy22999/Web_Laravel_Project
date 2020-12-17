@@ -13,4 +13,6 @@ interface AdminProductInterface
     function update($id, array $data);
 
     function getProductById($id);
+
+    function deleteProduct($id);
 }

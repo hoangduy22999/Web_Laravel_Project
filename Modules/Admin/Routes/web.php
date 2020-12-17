@@ -26,6 +26,7 @@ Route::group(['prefix' => 'admin', 'middleware'=>'web', 'namespace' => '\Modules
         Route::get('/render-property-form', 'ProductController@renderPropertyForm')->name('admin.product.renderform');
         Route::get('/product-edit/{id}', 'ProductController@showEditForm')->name('admin.product.edit');
         Route::post('/product-edit', 'ProductController@edit')->name('admin.product.post-edit');
+        Route::post('/product-delete', 'ProductController@delete')->name('admin.product.post-delete');
         Route::get('/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
     });
 
