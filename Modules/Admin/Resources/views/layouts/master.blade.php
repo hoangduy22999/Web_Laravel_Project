@@ -10,8 +10,6 @@
     <link rel="stylesheet" href="{{asset("plugins/fontawesome-free/css/all.min.css")}}">
     <!-- Ionicons -->
     <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
-    <!-- Tempusdominus Bbootstrap 4 -->
-    <link rel="stylesheet" href="{{asset("plugins/tempusdominus-bootstrap-4/css/tempusdominus-bootstrap-4.min.css")}}">
     <!-- iCheck -->
     <link rel="stylesheet" href="{{asset("plugins/icheck-bootstrap/icheck-bootstrap.min.css")}}">
     <!-- JQVMap -->
@@ -20,14 +18,11 @@
     <link rel="stylesheet" href="{{asset("admin/css/adminlte.min.css")}}">
     <!-- overlayScrollbars -->
     <link rel="stylesheet" href="{{asset("plugins/overlayScrollbars/css/OverlayScrollbars.min.css")}}">
-    <!-- Daterange picker -->
-    <link rel="stylesheet" href="{{asset("plugins/daterangepicker/daterangepicker.css")}}">
-    <!-- summernote -->
-    <link rel="stylesheet" href="{{asset("plugins/summernote/summernote-bs4.css")}}">
     <!-- Google Font: Source Sans Pro -->
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700" rel="stylesheet">
-
+    <!-- Datatable -->
     <link href="{{asset("plugins/datatables-bs4/css/dataTables.bootstrap4.min.css")}}">
+{{--    <link href="{{asset("plugins/datatables-select/css/select.bootstrap4.min.css")}}">--}}
     <!-- ./wrapper -->
     <!-- jQuery -->
     <script src="{{asset("plugins/jquery/jquery.min.js")}}"></script>
@@ -43,11 +38,9 @@
     <!-- DataTables -->
     <script src="{{asset("plugins/datatables/jquery.dataTables.min.js")}}"></script>
     <script src="{{asset("plugins/datatables-bs4/js/dataTables.bootstrap4.min.js")}}"></script>
-    <!-- Sparkline -->
-    <script src="{{asset("plugins/sparklines/sparkline.js")}}"></script>
-    <!-- daterangepicker -->
-    <script src="{{asset("plugins/moment/moment.min.js")}}"></script>
-    <script src="{{asset("plugins/daterangepicker/daterangepicker.js")}}"></script>
+{{--    <!-- Select datatable -->--}}
+{{--    <script src="{{asset("plugins/datatables-select/js/dataTables.select.min.js")}}"></script>--}}
+{{--    <script src="{{asset("plugins/datatables-select/js/select.bootstrap4.min.js")}}"></script>--}}
     <!-- overlayScrollbars -->
     <script src="{{asset("plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js")}}"></script>
     <!-- AdminLTE App -->

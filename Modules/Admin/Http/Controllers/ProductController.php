@@ -62,4 +62,11 @@ class ProductController extends Controller
 
         return redirect()->route('admin.product.list');
     }
+
+    public function delete(Request $request) {
+        $ids = $request->get('ids');
+        $this->productService->deleteMultiProduct($ids);
+
+        return redirect()->route('admin.product.list');
+    }
 }

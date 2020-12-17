@@ -17,9 +17,15 @@
             <div class="container-fluid">
                 <div class="row">
                     <div class="col-10">
+                        <form id="list-products" action="{{route('admin.product.post-delete')}}" method="POST">
+                        @csrf
                         <div class="card">
                             <div class="card-header">
-                                <h3 class="card-title"></h3>
+                                <h3 class="card-title">
+                                    <button type="button" class="btn btn-tool btn-outline-danger"  data-toggle="modal" data-target="#alert-modal">
+                                        Xóa nhiều sản phẩm <i class="fas fa-trash"></i>
+                                    </button>
+                                </h3>
 
                                 <div class="card-tools">
                                     <div class="input-group input-group-sm" style="width: 150px;">
@@ -39,6 +45,7 @@
                             </div>
                             <!-- /.card-body -->
                         </div>
+                        </form>
                         <!-- /.card -->
                     </div>
                     <div class="col-2">
@@ -50,20 +57,33 @@
                                 <span class="info-box-number">{{count($products)}}</span>
                             </div>
                         </div>
-{{--                        <div class="info-box mb-3 bg-blue">--}}
-{{--                            <span class="info-box-icon"><i class="fas fa-user"></i></span>--}}
-
-{{--                            <div class="info-box-content">--}}
-{{--                                <span class="info-box-text">Đã bán</span>--}}
-{{--                                <span class="info-box-number">10</span>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
                     </div>
                 </div>
             </div>
         </section>
     </div>
-
+    <div class="modal fade" id="alert-modal">
+        <div class="modal-dialog modal-md">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title">Xác nhận</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body text-center" style="font-size: 18px">
+                    <p>Bạn chắc chắn muốn xóa các sản phẩm này khỏi hệ thống!</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Đóng</button>
+                    <button type="button" class="btn btn-primary" onclick="deleteProducts()">Yepp</button>
+                </div>
+            </div>
+            <!-- /.modal-content -->
+        </div>
+        <!-- /.modal-dialog -->
+    </div>
+    <!-- /.modal -->
     <script>
         let products = {!! json_encode($products); !!};
 
@@ -84,32 +104,45 @@
             renderData(products);
         });
 
+        document.querySelector('form#list-products').addEventListener('submit', (event) => {
+            event.preventDefault();
+        });
+
         function renderData(data) {
             let table = $('#product-table').DataTable( {
                 "searching": false,
                 "info": false,
                 "paging": true,
                 "lengthChange": false,
+                "autoWidth": false,
                 "pageLength": "25",
+                "responsive": true,
                 "order": [[0, 'asc']],
+                "select": {
+                    "style":    'os',
+                    "selector": 'td:first-child'
+                },
                 "data": data,
                 "columns": [
-                    { "title": "ID", "data": null},
+                    { "title": "", "defaultContent": ""},
                     { "title": "Hình ảnh"},
                     { "title": "Tên"},
                     { "title": "Loại sản phẩm"},
                     { "title": "Giá gốc"},
                     { "title": "Giá khuyến mãi"},
                     { "title": "Số lượng"},
+                    { "title": "Trạng thái"},
                     { "title": "Thao tác"}
                 ],
                 "columnDefs": [
                     {
-                        "targets": 0,
-                        "searchable": false,
+                        "targets":   0,
                         "orderable": false,
-                        "className": "text-center align-middle",
-                        "width": "5%"
+                        "className": 'text-center align-middle',
+                        "width": "5%",
+                        'render': ( data, type, row ) => {
+                            return `<input type="checkbox" name="ids[]" value="${row.id}">`;
+                        }
                     },
                     {
                         "targets": 1,
@@ -121,6 +154,7 @@
                     {
                         "targets": 2,
                         "className": "align-middle",
+                        "width": "10%",
                         "render": ( data, type, row ) => {
                             return `${row.title}`;
                         },
@@ -162,6 +196,18 @@
                         "className": "text-center align-middle",
                         "width": "8%",
                         "render": ( data, type, row ) => {
+                            return `
+                                ${ row. status == 1 ?
+                                    "<span class='badge badge-success'>Hiển thị</span>" :
+                                    "<span class='badge badge-warning'>Không hiển thị</span>"}
+                                `;
+                        },
+                    },
+                    {
+                        "targets": 8,
+                        "className": "text-center align-middle",
+                        "width": "8%",
+                        "render": ( data, type, row ) => {
                             let editLink = "{{route('admin.product.edit', ':id')}}";
                             editLink = editLink.replace(':id', row.id);
                             return `
@@ -172,11 +218,15 @@
                     },
                 ]
             });
-            table.on('order.dt search.dt', function () {
-                table.column(0, { search: 'applied', order: 'applied' }).nodes().each(function (cell, i) {
-                    cell.innerHTML = i + 1;
-                });
-            }).draw();
+            // table.on('order.dt search.dt', function () {
+            //     table.column(0, { search: 'applied', order: 'applied' }).nodes().each(function (cell, i) {
+            //         cell.innerHTML = i + 1;
+            //     });
+            // }).draw();
+        }
+
+        function deleteProducts() {
+            $('form#list-products').submit();
         }
     </script>
 @endsection
