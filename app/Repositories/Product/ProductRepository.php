@@ -40,5 +40,13 @@ class ProductRepository extends BaseRepository implements AdminProductInterface,
         $query = $query->where('title', 'like', "%".$keyword."%");
         return $query->with(['category'])->paginate(PER_PAGE);
     }
+
+    function deleteProduct($id)
+    {
+        $product = $this->find($id);
+        $product->properties()->delete();
+        $product->quantity()->delete();
+        $product->delete();
+    }
 }
 

@@ -108,4 +108,11 @@ class ProductService
         return $this->productInterface->getProductById($id);
     }
 
+    public function deleteMultiProduct(array $ids) {
+        if(count($ids) <= 0) return;
+        foreach ($ids as $id) {
+            $this->productInterface->deleteProduct($id);
+        }
+    }
+
 }
