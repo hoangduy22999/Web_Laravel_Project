@@ -86,7 +86,7 @@
 
         function renderData(data) {
             let table = $('#product-table').DataTable( {
-                "searching": true,
+                "searching": false,
                 "info": false,
                 "paging": true,
                 "lengthChange": false,
@@ -162,9 +162,11 @@
                         "className": "text-center align-middle",
                         "width": "8%",
                         "render": ( data, type, row ) => {
+                            let editLink = "{{route('admin.product.edit', ':id')}}";
+                            editLink = editLink.replace(':id', row.id);
                             return `
-                                <button type='button' class='btn btn-outline-warning btn-sm'><i class="fas fa-edit"></i></button>
-                                <button type='button' class='btn btn-outline-success btn-sm'><i class="fas fa-eye"></i></button>
+                                <a type='button' href="${editLink}" class='btn btn-outline-warning btn-sm'><i class="fas fa-edit"></i></a>
+                                <a type='button' href="#" class='btn btn-outline-success btn-sm'><i class="fas fa-eye"></i></a>
                             `;
                         },
                     },

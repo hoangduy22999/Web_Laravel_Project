@@ -75,4 +75,37 @@ class ProductService
         }
     }
 
+    public function updateProduct(array $data) {
+        DB::beginTransaction();
+        $id = $data['id'];
+        $productInfo = [
+            'title' => $data['title'],
+            'image' => $data['image'],
+            'value' => $data['value'],
+            'price' => $data['price'],
+            'status' => $data['status'],
+        ];
+        $result = $this->productInterface->update($id, $productInfo);
+        if(!empty($result)) {
+            $this->warehouseInterface->updateOrCreateQuantity($id, $data['quantity']);
+
+            foreach($data['properties'] as $key => $value) {
+                $propertyInfo = [
+                    'product_id' => $result->id,
+                    'property_type_id' => $value['property_type_id'],
+                    'value' => $value['value'],
+                ];
+                $this->propertyInterface->update($key, $propertyInfo);
+            }
+
+            DB::commit();
+        } else {
+            DB::rollBack();
+        }
+    }
+
+    public function getProductById($id) {
+        return $this->productInterface->getProductById($id);
+    }
+
 }

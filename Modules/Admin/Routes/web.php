@@ -21,9 +21,11 @@ Route::group(['prefix' => 'admin', 'middleware'=>'web', 'namespace' => '\Modules
     Route::group(['middleware' => 'auth.admin'], function () {
         Route::get('/dashboard', 'AdminController@index')->name('admin.dashboard');
         Route::get('/product-list', 'ProductController@index')->name('admin.product.list');
-        Route::get('/product-create', 'ProductController@create')->name('admin.product.create');
-        Route::post('/product-create', 'ProductController@postCreate')->name('admin.product.post-create');
+        Route::get('/product-create', 'ProductController@showCreateForm')->name('admin.product.create');
+        Route::post('/product-create', 'ProductController@create')->name('admin.product.post-create');
         Route::get('/render-property-form', 'ProductController@renderPropertyForm')->name('admin.product.renderform');
+        Route::get('/product-edit/{id}', 'ProductController@showEditForm')->name('admin.product.edit');
+        Route::post('/product-edit', 'ProductController@edit')->name('admin.product.post-edit');
         Route::get('/logout', 'Auth\AdminLoginController@logout')->name('admin.logout');
     });
 
