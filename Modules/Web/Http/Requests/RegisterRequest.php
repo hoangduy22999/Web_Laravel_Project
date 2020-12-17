@@ -43,8 +43,8 @@ class RegisterRequest extends FormRequest
             'phone_number.required' => 'Số điện thoại chưa được nhập',
             'phone_number.regex' => 'Số điện thoại không đúng định dạng',
             'password.required' => 'Mật khẩu chưa được nhập',
-            'password.min' => 'Email quá ngắn',
-            'password.max' => 'Email quá dài',
+            'password.min' => 'Mật khẩu quá ngắn',
+            'password.max' => 'Mật khẩu quá dài',
             're_password.required' => 'Mật khẩu chưa được nhập',
             're_password.same' => 'Mật khẩu không khớp'
 

@@ -25,12 +25,12 @@ class ProductRepository extends BaseRepository implements AdminProductInterface,
 
     public function getAllWithPaginate()
     {
-        return $this->_model->with(['category'])->paginate(PER_PAGE);
+        return $this->_model->whereStatus(1)->with(['category'])->paginate(PER_PAGE);
     }
 
     public function getProductById($id)
     {
-        return $this->_model->with(['category', 'properties'])->find($id);
+        return $this->_model->with(['category', 'properties', 'quantity'])->find($id);
     }
 
     function getListProductsWithKeyword($keyword, $categoryId = null)

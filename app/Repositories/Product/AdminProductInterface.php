@@ -9,4 +9,8 @@ interface AdminProductInterface
     function getAll();
 
     function create(array $data);
+
+    function update($id, array $data);
+
+    function getProductById($id);
 }
