@@ -29,12 +29,12 @@ class ProductController extends Controller
         return view('admin::products.index', compact('products', 'categories'));
     }
 
-    public function create(Request $request) {
+    public function showCreateForm(Request $request) {
         $categories = $this->productService->getCategories();
         return view('admin::products.create', compact('categories'));
     }
 
-    public function postCreate(ProductCRUDRequest $request) {
+    public function create(ProductCRUDRequest $request) {
         $this->productService->createProduct($request->all());
 
         return redirect()->route('admin.product.list');
@@ -49,6 +49,17 @@ class ProductController extends Controller
         } else {
             return response()->json([]);
         }
+    }
 
+    public function showEditForm(Request $request, $id) {
+        $product = $this->productService->getProductById($id);
+
+        return view('admin::products.edit', compact('product'));
+    }
+
+    public function edit(ProductCRUDRequest $request) {
+        $this->productService->updateProduct($request->all());
+
+        return redirect()->route('admin.product.list');
     }
 }

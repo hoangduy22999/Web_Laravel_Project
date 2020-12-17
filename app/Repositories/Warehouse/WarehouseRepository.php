@@ -22,5 +22,10 @@ class WarehouseRepository extends BaseRepository implements WarehouseInterface
         $quantity = $this->_model->where('product_id', $productId)->pluck('quantity')->first();
         return $quantity ?? 0;
     }
+
+    function updateOrCreateQuantity($productId, $quantity)
+    {
+        return $this->_model->updateOrCreate(['product_id' => $productId], ['quantity' => $quantity]);
+    }
 }
 
