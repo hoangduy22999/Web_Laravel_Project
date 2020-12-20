@@ -26,10 +26,15 @@ Route::group(['prefix' => '/', 'middleware'=>'web', 'namespace' => '\Modules\Web
         Route::get('/cart', 'CartController@showCart')->name('product.show-cart');
         Route::post('/update-cart', 'CartController@updateCart')->name('product.update-cart');
         Route::post('/remove-cart', 'CartController@removeItemInCart')->name('product.remove-item');
-        Route::get('/checkout', 'CartController@checkout')->name('web.checkout');
-        Route::get('/checkout-success', 'CartController@checkoutSuccess')->name('web.checkout.success');
+        //Route::get('/checkout', 'CartController@checkout')->name('web.checkout');
+        //Route::get('/checkout-success', 'CartController@checkoutSuccess')->name('web.checkout.success');
         Route::get('/account', 'AccountController@index')->name('account');
         Route::get('/logout', 'Auth\LoginController@logout')->name('web.logout');
+        Route::get('/checkout', 'CheckoutController@checkout')->name('web.checkout');
+        Route::get('/save-checkout-customer', 'CheckoutController@save_checkout_customer')->name('web.save_checkout_customer');
+        Route::get('/success/{shipping_id}', 'CheckoutController@success')->name('web.success');
+        Route::get('/remove-order/{order_id}', 'OrderhistoryController@remove_order')->name('web.remove_order');
+        Route::get('/order-history', 'OrderhistoryController@order_history')->name('web.order_history');
     });
 
 });
