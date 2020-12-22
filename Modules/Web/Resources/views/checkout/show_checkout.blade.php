@@ -36,28 +36,43 @@
                                                 <h3 class="mb-4 font-size-3">Thông tin nhận hàng</h3>
                                                 <div class="woocommerce-billing-fields__field-wrapper row">
                                                     <p class="col-12 mb-4d75 form-row form-row-first validate-required woocommerce-invalid woocommerce-invalid-required-field" id="billing_first_name_field" data-priority="10">
-                                                        <label for="billing_first_name" class="form-label">Họ tên người nhận *</label>
+                                                        <label for="billing_first_name" class="form-label　@error('receiver_name') is-invalid @enderror">Họ tên người nhận *</label>
                                                         <input type="text" class="input-text form-control"  name="receiver_name" placeholder="" value="">
+                                                        @error('receiver_name')
+                                                        <span class="error invalid-feedback">{{ $message }}</span>
+                                                        @enderror
                                                     </p>
                                                     <p class="col-12 mb-4d75 form-row form-row-wide" id="billing_company_field" data-priority="30">
-                                                        <label for="billing_company" class="form-label">Email</label>
+                                                        <label for="billing_company" class="form-label　@error('email') is-invalid @enderror">Email</label>
                                                         <input type="email" class="input-text form-control" name="email">
+                                                        @error('email')
+                                                        <span class="error invalid-feedback">{{ $message }}</span>
+                                                        @enderror
                                                     </p>
                                                     <p class="col-12 mb-4d75 form-row form-row-wide" id="billing_company_field" data-priority="30">
-                                                        <label for="billing_company" class="form-label">Phone number *</label>
+                                                        <label for="billing_company" class="form-label @error('receiver_phone_number') is-invalid @enderror">Phone number *</label>
                                                         <input type="text" class="input-text form-control" name="receiver_phone_number">
+                                                        @error('receiver_phone_number')
+                                                        <span class="error invalid-feedback">{{ $message }}</span>
+                                                        @enderror
                                                     </p>
                                                     <p class="col-12 mb-4d75 form-row form-row-wide address-field update_totals_on_change validate-required woocommerce-validated">
-                                                        <label for="billing_country" class="form-label">Tỉnh/Thành phố <abbr class="required" title="required">*</abbr></label>
+                                                        <label for="billing_country" class="form-label @error('province') is-invalid @enderror">Tỉnh/Thành phố <abbr class="required" title="required">*</abbr></label>
                                                         <select name="province" id="billing_country" class="form-control country_to_state country_select  select2-hidden-accessible" tabindex="-1">
                                                             <option value="">Chọn tỉnh/thành phố</option>
                                                             <option value="Hà Nội">Hà Nội</option>
                                                             <option value="Hồ Chí Minh">Hồ Chí Minh</option>
                                                         </select>
+                                                        @error('province')
+                                                        <span class="error invalid-feedback">{{ $message }}</span>
+                                                        @enderror
                                                     </p>
                                                     <p class="col-12 mb-3 form-row form-row-wide address-field validate-required" id="billing_address_1_field" data-priority="50">
-                                                        <label for="billing_address_1" class="form-label">Địa chỉ *</label>
+                                                        <label for="billing_address_1" class="form-label @error('add') is-invalid @enderror">Địa chỉ *</label>
                                                         <input type="text" class="input-text form-control" name="billing_address_1" placeholder="Địa chỉ cụ thể khi nhận hàng" value="">
+                                                        @error('add')
+                                                        <span class="error invalid-feedback">{{ $message }}</span>
+                                                        @enderror
                                                     </p>
                                                     <p class="col-12 mb-3 form-row form-row-wide address-field validate-required">
                                                         <label for="order_comments" class="form-label">Ghi chú (không bắt buộc)</label>

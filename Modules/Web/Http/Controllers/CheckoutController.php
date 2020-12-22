@@ -25,7 +25,7 @@ class CheckoutController extends WebBaseController
             ->with('product_cart', $product_cart);
     }
 
-    public function save_checkout_customer(Request $requests)
+    public function save_checkout_customer(ShippingRequest $requests)
     {
         $user = Auth::guard('web')->user();
         $data_ship = array();
