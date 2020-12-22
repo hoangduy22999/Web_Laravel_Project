@@ -192,7 +192,7 @@
                     if(result.status) {
                         alert(result.message);
                     } else {
-                        alert(result.message.toString());
+                        alert(result.message.join("\n"));
                     }
                 },
             });
