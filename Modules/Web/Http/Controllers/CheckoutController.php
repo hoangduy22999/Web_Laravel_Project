@@ -97,36 +97,5 @@ class CheckoutController extends WebBaseController
             ->with('shipping', $shipping);
     }
 
-    public function remove_order(){
-        $user = Auth::guard('web')->user();
-        $order_new = DB::table('orders')->where('user_id', $user->id)->orderby('id', 'desc')->limit(1)->get();
-        foreach ($order_new as $value){
-            $id_order_new = $value->id;
-        }
-        $order_lines_new = DB::table('order_lines')->where('order_id', $id_order_new)->get();
-        foreach ($order_lines_new as $item) {
-            $product_id = $item->product_id;
-            $warehouse = DB::table('warehouses')->where('product_id', $product_id)->get();
-            foreach ($warehouse as $ware){
-                $quantity_current = $ware->quantity;
-            }
-            $quantity_new = $item->quantity + $quantity_current;
-            DB::table('warehouses')->where('product_id', $product_id)->update(['quantity'=>$quantity_new]);
-
-        }
-        DB::table('order_lines')->where('order_id', $id_order_new)->delete();
-        DB::table('orders')->where('id', $id_order_new)->delete();
-
-    }
-
-    public function order_history(){
-        $order = DB::table('orders')->orderby('id', 'desc')->get();
-        return view('web::checkout.order_history')->with('order', $order);
-    }
-
-    public function payment(){
-        $user = Auth::guard('web')->user();
-        echo $user->id;
-    }
 }
 

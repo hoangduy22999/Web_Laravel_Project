@@ -35,6 +35,8 @@ Route::group(['prefix' => '/', 'middleware'=>'web', 'namespace' => '\Modules\Web
         Route::get('/success/{shipping_id}', 'CheckoutController@success')->name('web.success');
         Route::get('/remove-order/{order_id}', 'OrderhistoryController@remove_order')->name('web.remove_order');
         Route::get('/order-history', 'OrderhistoryController@order_history')->name('web.order_history');
+        Route::get('order-history/view-ordered/{ordered_id}', 'OrderhistoryController@view_ordered')->name('web.view_ordered');
+
     });
 
 });

@@ -38,5 +38,11 @@ class OrderhistoryController extends WebBaseController
         return redirect()->route('web.order_history');
 
     }
+
+    public function view_ordered($ordered_id){
+        $order_lines = DB::table('order_lines')->join('products', 'order_lines.product_id', '=', 'products.id')->where('order_lines.order_id', $ordered_id)->get();
+        $order = DB::table('orders')->where('id', $ordered_id)->get();
+        return view('web::order_history.view_ordered')->with('order_lines', $order_lines)->with('order', $order);
+    }
 }
 

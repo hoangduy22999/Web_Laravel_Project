@@ -46,7 +46,7 @@
                                             <td class="align-middle py-5">Thanh toán khi nhận hàng</td>
                                             <td class="align-middle py-5">
                                                 <div class="d-flex justify-content-center">
-                                                    <a href="{{route('home')}}"> <button type="submit" class="btn btn-dark rounded-1 btn-wide font-weight-medium">View
+                                                    <a href="{{route('web.view_ordered', array('ordered_id'=>$order->id))}}"> <button type="submit" class="btn btn-dark rounded-1 btn-wide font-weight-medium">View
                                                         </button></a>
                                                     <a href="{{route('web.remove_order', array('order_id'=>$order->id))}}"> <button type="submit" class="btn btn-dark rounded-1 btn-wide font-weight-medium">Huỷ đơn hàng
                                                         </button></a>
