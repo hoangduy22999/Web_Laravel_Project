@@ -41,4 +41,8 @@ class CartRepository extends BaseRepository implements CartInterface
     {
         return $this->_model->where($conditions)->update($data);
     }
+
+    function getQuantityProductInCart($userId, $productId){
+        return $this->_model->where(['user_id' => $userId, 'product_id' => $productId])->pluck('quantity')->first();
+    }
 }
