@@ -14,8 +14,8 @@
                                 </a>
                             </li>
                             <li class="nav-item mx-0">
-                                <a class="nav-link d-flex align-items-center px-0" id="pills-two-example1-tab" data-toggle="pill" href="#pills-two-example1" role="tab" aria-controls="pills-two-example1" aria-selected="false">
-                                    <span class="font-weight-normal text-gray-600">Lịch sử mua hàng</span>
+                                <a class="nav-link d-flex align-items-center px-0" id="pills-two-example1-tab" data-toggle="pill" href="{{route('web.order_history')}}" role="tab" aria-controls="pills-two-example1" aria-selected="false">
+                                    <a href="{{route('web.order_history')}}"><span class="font-weight-normal text-gray-600">Lịch sử mua hàng</span></a>
                                 </a>
                             </li>
                         </ul>

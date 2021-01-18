@@ -11,50 +11,52 @@
                         <h6 class="font-size-3 font-weight-medium text-center mb-4 pb-xl-1">Cám ơn bạn đã đặt hàng trên hệ thống chúng tôi.</h6>
                         <div class="border-bottom mb-5 pb-5 overflow-auto overflow-md-visible">
                             <div class="pl-3">
+                                <?php
+                                $subtotal = 0;
+                                foreach($order_lines as $order_line){
+                                        $subtotal += $order_line->order_price;
+                                        }
+                                ?>
+                                @foreach($orders as $order)
+
                                 <table class="table table-borderless mb-0 ml-1">
                                     <thead>
                                     <tr>
-                                        <th scope="col" class="font-size-2 font-weight-normal py-0">Mã đơn hàng:</th>
-                                        <th scope="col" class="font-size-2 font-weight-normal py-0">Ngày đặt:</th>
+                                        <th scope="col" class="font-size-2 font-weight-normal py-0">Mã đơn hàng: </th>
+                                        <th scope="col" class="font-size-2 font-weight-normal py-0">Ngày đặt: </th>
                                         <th scope="col" class="font-size-2 font-weight-normal py-0 text-md-center">Total: </th>
                                         <th scope="col" class="font-size-2 font-weight-normal py-0 text-md-right pr-md-9">Payment method:</th>
                                     </tr>
                                     </thead>
                                     <tbody>
                                     <tr>
-                                        <th scope="row" class="pr-0 py-0 font-weight-medium">1779</th>
-                                        <td class="pr-0 py-0 font-weight-medium">March 24, 2020</td>
-                                        <td class="pr-0 py-0 font-weight-medium text-md-center">$2930</td>
-                                        <td class="pr-md-4 py-0 font-weight-medium text-md-right">Direct bank transfer</td>
+                                        <th scope="row" class="pr-0 py-0 font-weight-medium">{{$order->order_no}}</th>
+                                        <td class="pr-0 py-0 font-weight-medium">{{$order->ordered_at}}</td>
+                                        <td class="pr-0 py-0 font-weight-medium text-md-center">{{\App\Helpers\format_currency($subtotal)}}</td>
+                                        <td class="pr-md-4 py-0 font-weight-medium text-md-right">Thanh toán khi nhận </td>
                                     </tr>
                                     </tbody>
                                 </table>
+                                @endforeach
+
                             </div>
                         </div>
                         <div class="border-bottom mb-5 pb-6">
                             <div class="px-3 px-md-4">
                                 <div class="ml-md-2">
                                     <h6 class="font-size-3 on-weight-medium mb-4 pb-1">Chi tiết đơn hàng</h6>
+                                    @foreach($order_lines as $order_line)
                                     <div class="d-flex justify-content-between mb-4">
                                         <div class="d-flex align-items-baseline">
                                             <div>
-                                                <h6 class="font-size-2 font-weight-normal mb-1">The Overdue Life of <br> Amy Byler</h6>
-                                                <span class="font-size-2 text-gray-600">(Paperback, English)</span>
+                                                <h6 class="font-size-2 font-weight-normal mb-1">{{$order_line->title}} <br> </h6>
+                                                <span class="font-size-2 text-gray-600">({{$order_line->name}})</span>
                                             </div>
-                                            <span class="font-size-2 ml-4 ml-md-8">x7</span>
+                                            <span class="font-size-2 ml-4 ml-md-8">x{{$order_line->quantity}}</span>
                                         </div>
-                                        <span class="font-weight-medium font-size-2">$951</span>
+                                        <span class="font-weight-medium font-size-2">{{\App\Helpers\format_currency($order_line->order_price)}}</span>
                                     </div>
-                                    <div class="d-flex justify-content-between">
-                                        <div class="d-flex align-items-baseline">
-                                            <div>
-                                                <h6 class="font-size-2 font-weight-normal mb-1">All You Can Ever Know: <br> A Memoir</h6>
-                                                <span class="font-size-2 text-gray-600">(Paperback, English)</span>
-                                            </div>
-                                            <span class="font-size-2 ml-2 ml-md-6">x3</span>
-                                        </div>
-                                        <span class="font-weight-medium font-size-2">$348</span>
-                                    </div>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
@@ -62,15 +64,15 @@
                             <ul class="list-unstyled px-3 pl-md-5 pr-md-4 mb-0">
                                 <li class="d-flex justify-content-between py-2">
                                     <span class="font-weight-medium font-size-2">Subtotal:</span>
-                                    <span class="font-weight-medium font-size-2">$951</span>
+                                    <span class="font-weight-medium font-size-2">{{\App\Helpers\format_currency($subtotal)}}</span>
                                 </li>
                                 <li class="d-flex justify-content-between py-2">
                                     <span class="font-weight-medium font-size-2">Shipping:</span>
-                                    <span class="font-weight-medium font-size-2">Free Shipping</span>
+                                    <span class="font-weight-medium font-size-2">Miễn phí</span>
                                 </li>
                                 <li class="d-flex justify-content-between pt-2">
                                     <span class="font-weight-medium font-size-2">Payment Method:</span>
-                                    <span class="font-weight-medium font-size-2">Direct bank transfer</span>
+                                    <span class="font-weight-medium font-size-2">Thanh toán khi nhận hàng</span>
                                 </li>
                             </ul>
                         </div>
@@ -78,9 +80,10 @@
                             <div class="px-3 pl-md-5 pr-md-4">
                                 <div class="d-flex justify-content-between">
                                     <span class="font-size-2 font-weight-medium">Total</span>
-                                    <span class="font-weight-medium fon-size-2">$2498</span>
+                                    <span class="font-weight-medium fon-size-2">{{\App\Helpers\format_currency($subtotal)}}</span>
                                 </div>
                             </div>
+                            <br>
                         </div>
                         <div class="px-3 pl-md-5 pr-md-4 mb-6 pb-xl-1">
                             <div class="row row-cols-1 row-cols-md-2">
@@ -89,24 +92,26 @@
                                         <h6 class="font-weight-medium font-size-22 mb-3">Billing Address
                                         </h6>
                                         <address class="d-flex flex-column mb-0">
-                                            <span class="text-gray-600 font-size-2">Ali Tufan</span>
-                                            <span class="text-gray-600 font-size-2">Bedford St,</span>
-                                            <span class="text-gray-600 font-size-2">Covent Garden, </span>
-                                            <span class="text-gray-600 font-size-2">London WC2E 9ED</span>
-                                            <span class="text-gray-600 font-size-2">United Kingdom</span>
+                                            <span class="text-gray-600 font-size-2">Hà Nội</span>
+                                            <span class="text-gray-600 font-size-2">Số 1 Đại Cồ Việt, Hai Bà Tr</span>
+                                            <span class="text-gray-600 font-size-2">0986868686</span>
+                                            <span class="text-gray-600 font-size-2">hust@hust.edu.vn</span>
+                                            <span class="text-gray-600 font-size-2">Đại học Bách Khoa Hà Nội</span>
                                         </address>
                                     </div>
                                 </div>
                                 <div class="col">
                                     <h6 class="font-weight-medium font-size-22 mb-3">Shipping Address
                                     </h6>
+                                    @foreach($shipping as $ship)
                                     <address class="d-flex flex-column mb-0">
-                                        <span class="text-gray-600 font-size-2">Ali Tufan</span>
-                                        <span class="text-gray-600 font-size-2">Bedford St,</span>
-                                        <span class="text-gray-600 font-size-2">Covent Garden, </span>
-                                        <span class="text-gray-600 font-size-2">London WC2E 9ED</span>
-                                        <span class="text-gray-600 font-size-2">United Kingdom</span>
+                                        <span class="text-gray-600 font-size-2">{{$ship->province}}</span>
+                                        <span class="text-gray-600 font-size-2">{{$ship->address}}</span>
+                                        <span class="text-gray-600 font-size-2">{{$ship->receiver_phone_number}} </span>
+                                        <span class="text-gray-600 font-size-2">{{$ship->receiver_email}}</span>
+                                        <span class="text-gray-600 font-size-2">{{$ship->receiver_name}}</span>
                                     </address>
+                                    @endforeach
                                 </div>
                             </div>
                         </div>
