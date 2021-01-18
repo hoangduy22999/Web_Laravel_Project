@@ -17,7 +17,7 @@
                                         $subtotal += $order_line->order_price;
                                         }
                                 ?>
-                                @foreach($order as $order)
+                                @foreach($orders as $order)
 
                                 <table class="table table-borderless mb-0 ml-1">
                                     <thead>
@@ -32,7 +32,7 @@
                                     <tr>
                                         <th scope="row" class="pr-0 py-0 font-weight-medium">{{$order->order_no}}</th>
                                         <td class="pr-0 py-0 font-weight-medium">{{$order->ordered_at}}</td>
-                                        <td class="pr-0 py-0 font-weight-medium text-md-center">{{$subtotal}} VND</td>
+                                        <td class="pr-0 py-0 font-weight-medium text-md-center">{{\App\Helpers\format_currency($subtotal)}}</td>
                                         <td class="pr-md-4 py-0 font-weight-medium text-md-right">Thanh toán khi nhận </td>
                                     </tr>
                                     </tbody>
@@ -54,7 +54,7 @@
                                             </div>
                                             <span class="font-size-2 ml-4 ml-md-8">x{{$order_line->quantity}}</span>
                                         </div>
-                                        <span class="font-weight-medium font-size-2">{{$order_line->order_price}} VND</span>
+                                        <span class="font-weight-medium font-size-2">{{\App\Helpers\format_currency($order_line->order_price)}}</span>
                                     </div>
                                     @endforeach
                                 </div>
@@ -64,7 +64,7 @@
                             <ul class="list-unstyled px-3 pl-md-5 pr-md-4 mb-0">
                                 <li class="d-flex justify-content-between py-2">
                                     <span class="font-weight-medium font-size-2">Subtotal:</span>
-                                    <span class="font-weight-medium font-size-2">{{$subtotal}} VND</span>
+                                    <span class="font-weight-medium font-size-2">{{\App\Helpers\format_currency($subtotal)}}</span>
                                 </li>
                                 <li class="d-flex justify-content-between py-2">
                                     <span class="font-weight-medium font-size-2">Shipping:</span>
@@ -80,7 +80,7 @@
                             <div class="px-3 pl-md-5 pr-md-4">
                                 <div class="d-flex justify-content-between">
                                     <span class="font-size-2 font-weight-medium">Total</span>
-                                    <span class="font-weight-medium fon-size-2">{{$subtotal}} VND</span>
+                                    <span class="font-weight-medium fon-size-2">{{\App\Helpers\format_currency($subtotal)}}</span>
                                 </div>
                             </div>
                             <br>

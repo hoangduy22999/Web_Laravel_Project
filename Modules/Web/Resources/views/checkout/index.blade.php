@@ -111,25 +111,13 @@
                                     <div id="order_review" class="col-md-6 col-lg-5 col-xl-4 woocommerce-checkout-review-order">
                                         <div id="checkoutAccordion" class="border border-gray-900 bg-white mb-5">
                                             <div class="p-4d875 border">
-                                                <div id="checkoutHeadingOnee" class="checkout-head">
-                                                    <a href="https://demo2.madrasthemes.com/bookworm-html/redesigned-octo-fiesta/html-demo/shop/checkout.html#" class="text-dark d-flex align-items-center justify-content-between collapsed" data-toggle="collapse" data-target="#checkoutCollapseOnee" aria-expanded="false" aria-controls="checkoutCollapseOnee">
+                                                <div class="checkout-head">
+                                                    <a href="#" class="text-dark d-flex align-items-center justify-content-between collapsed" aria-expanded="true">
                                                         <h3 class="checkout-title mb-0 font-weight-medium font-size-3">Danh sách sản phẩm</h3>
-                                                        <svg class="mins" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="15px" height="2px">
-                                                            <path fill-rule="evenodd" fill="rgb(22, 22, 25)" d="M0.000,-0.000 L15.000,-0.000 L15.000,2.000 L0.000,2.000 L0.000,-0.000 Z"></path>
-                                                        </svg>
-                                                        <svg class="plus" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="15px" height="15px">
-                                                            <path fill-rule="evenodd" fill="rgb(22, 22, 25)" d="M15.000,8.000 L9.000,8.000 L9.000,15.000 L7.000,15.000 L7.000,8.000 L0.000,8.000 L0.000,6.000 L7.000,6.000 L7.000,-0.000 L9.000,-0.000 L9.000,6.000 L15.000,6.000 L15.000,8.000 Z"></path>
-                                                        </svg>
                                                     </a>
                                                 </div>
-                                                <div id="checkoutCollapseOnee" class="mt-4 checkout-content collapse" aria-labelledby="checkoutHeadingOnee" data-parent="#checkoutAccordion" style="">
+                                                <div id="checkoutCollapseOnee" class="mt-4 checkout-content collapse-show" aria-labelledby="checkoutHeadingOnee" data-parent="#checkoutAccordion" style="">
                                                     <table class="shop_table woocommerce-checkout-review-order-table">
-                                                        <thead class="d-none">
-                                                        <tr>
-                                                            <th class="product-name">Product</th>
-                                                            <th class="product-total">Total</th>
-                                                        </tr>
-                                                        </thead>
                                                         <tbody>
                                                         <tr class="cart_item">
                                                             <td class="product-name">

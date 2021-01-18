@@ -188,6 +188,7 @@
                 success: function(result){
                     if(result.status) {
                         $('#cart-item').html(result.cartItem);
+                        alert("Thêm vào giỏ hàng thành công");
                     } else {
                         alert(result.message);
                     }

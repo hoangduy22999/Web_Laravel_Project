@@ -69,7 +69,7 @@ class CheckoutController extends WebBaseController
         $user = Auth::guard('web')->user();
 
         $data_order = array();
-        $data_order['order_no'] = rand(1,1000);
+        $data_order['order_no'] = "N" . date('Ymd-His');
         $data_order['user_id'] = $user->id;
         $data_order['payment_type'] = 1;
         $data_order['order_status'] = 1;
@@ -89,10 +89,10 @@ class CheckoutController extends WebBaseController
             DB::table('order_lines')->insert($data_order_line);
         }
 
-        $order = DB::table('orders')->where('id', $order_id)->get();
+        $orders = DB::table('orders')->where('id', $order_id)->get();
         $order_lines = DB::table('order_lines')->join('products','order_lines.product_id','=','products.id')->join('categories','products.category_id','=','categories.id')->where('order_lines.order_id', $order_id)->get();
         DB::table('carts')->delete();
-        return view('web::checkout.success')->with('order', $order)
+        return view('web::checkout.success')->with('orders', $orders)
             ->with('order_lines', $order_lines)
             ->with('shipping', $shipping);
     }

@@ -37,27 +37,30 @@
                                     </tr>
                                     </thead>
                                     <tbody>
-                                    @foreach($order as $order)
+                                    @foreach($orders as $order)
                                     <tr class="border">
                                         <th class="pl-3 pl-md-5 font-weight-normal align-middle py-6">#{{$order->order_no}}</th>
                                         <td class="align-middle py-5">{{$order->ordered_at}}</td>
-                                        @if($order->order_status==1)
-                                            <td class="align-middle py-5">Đang chờ</td>
+                                        @if($order->order_status == 1)
+                                            <td class="align-middle py-5">Đang chờ xử lý</td>
                                             <td class="align-middle py-5">Thanh toán khi nhận hàng</td>
                                             <td class="align-middle py-5">
                                                 <div class="d-flex justify-content-center">
-                                                    <a href="{{route('web.view_ordered', array('ordered_id'=>$order->id))}}"> <button type="submit" class="btn btn-dark rounded-1 btn-wide font-weight-medium">View
+                                                    <a href="{{route('web.view_ordered', array('ordered_id'=>$order->id))}}"> <button type="submit" class="btn btn-dark rounded-1 btn-wide font-weight-medium mr-1">Xem
                                                         </button></a>
                                                     <a href="{{route('web.remove_order', array('order_id'=>$order->id))}}"> <button type="submit" class="btn btn-dark rounded-1 btn-wide font-weight-medium">Huỷ đơn hàng
                                                         </button></a>
                                                 </div>
-                                                <div class="d-flex justify-content-center">
-
-                                                </div>
                                             </td>
                                         @else
-                                        <td class="align-middle py-5"><span class="text-primary">Đã huỷ</span></td></td>
+                                            <td class="align-middle py-5"><span class="text-primary">Đã huỷ</span></td></td>
                                             <td class="align-middle py-5">Thanh toán khi nhận hàng</td>
+                                            <td>
+                                                <div class="d-flex justify-content-center">
+                                                    <a href="{{route('web.view_ordered', array('ordered_id'=>$order->id))}}"> <button type="submit" class="btn btn-dark rounded-1 btn-wide font-weight-medium">Xem
+                                                        </button></a>
+                                                </div>
+                                            </td>
                                         @endif
                                     </tr>
                                     @endforeach

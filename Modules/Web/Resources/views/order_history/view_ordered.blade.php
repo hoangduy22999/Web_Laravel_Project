@@ -11,7 +11,7 @@
                         <div class="border-bottom mb-5 pb-6">
                             <div class="px-3 px-md-4">
                                 <div class="ml-md-2">
-                                    @foreach($order as $order)
+                                    @foreach($orders as $order)
                                     <h6 class="font-size-3 on-weight-medium mb-4 pb-1">Chi tiết đơn hàng: {{$order->order_no}}</h6>
                                     @endforeach
                                     <?php $total_price = 0;
@@ -25,7 +25,7 @@
                                                 </div>
                                                 <span class="font-size-2 ml-4 ml-md-8">x{{$order_line->quantity}}</span>
                                             </div>
-                                            <span class="font-weight-medium font-size-2">{{$order_line->order_price}} VND</span>
+                                            <span class="font-weight-medium font-size-2">{{\App\Helpers\format_currency($order_line->order_price)}}</span>
                                         </div>
                                         <?php
                                         $total_price += $order_line->order_price;
@@ -38,7 +38,7 @@
                             <ul class="list-unstyled px-3 pl-md-5 pr-md-4 mb-0">
                                 <li class="d-flex justify-content-between py-2">
                                     <span class="font-weight-medium font-size-2">Total:</span>
-                                    <span class="font-weight-medium font-size-2">{{$total_price}} VND</span>
+                                    <span class="font-weight-medium font-size-2">{{\App\Helpers\format_currency($total_price)}}</span>
                                 </li>
                                 <li class="d-flex justify-content-between py-2">
                                     <span class="font-weight-medium font-size-2">Shipping:</span>
@@ -49,6 +49,14 @@
                                     <span class="font-weight-medium font-size-2">Thanh toán khi nhận hàng</span>
                                 </li>
                             </ul>
+                        </div>
+                        <div>
+                            <div class="d-flex justify-content-center align-content-center">
+                                <a href="javascript:;" onclick="window.history.back();">
+                                    <button type="button" class="btn btn-dark rounded-1 btn-wide font-weight-medium mr-1 mb-2">Quay lại
+                                    </button>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>

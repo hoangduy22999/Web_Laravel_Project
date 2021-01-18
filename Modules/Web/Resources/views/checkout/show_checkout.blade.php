@@ -17,17 +17,6 @@
                         ?>
                         <div class="entry-content">
                             <div class="woocommerce">
-                                <form id="collapseExample9" class="collapse checkout_coupon mt-4 p-4 bg-white border" method="post">
-                                    <div class="row d-flex">
-                                        <p class="col-md-4 d-inline form-row form-row-first mb-3 mb-md-0">
-                                            <input type="text" name="coupon_code1" class="input-text form-control" placeholder="Coupon code" id="coupon_code1" value="">
-                                        </p>
-                                        <p class="col-md-3 d-inline form-row form-row-last">
-                                            <input type="submit" class="button form-control border-0 height-4 btn btn-dark rounded-0" name="apply_coupon" value="Apply coupon">
-                                        </p>
-                                    </div>
-                                    <div class="clear"></div>
-                                </form>
                                 <form name="checkout" action="{{route('web.save_checkout_customer')}}" method="get" class="checkout woocommerce-checkout row mt-8"  enctype="multipart/form-data" novalidate="novalidate">
                                     {{csrf_field()}}
                                     <div class="col2-set col-md-6 col-lg-7 col-xl-8 mb-6 mb-md-0" id="customer_details">
@@ -60,8 +49,9 @@
                                                         <label for="billing_country" class="form-label @error('province') is-invalid @enderror">Tỉnh/Thành phố <abbr class="required" title="required">*</abbr></label>
                                                         <select name="province" id="billing_country" class="form-control country_to_state country_select  select2-hidden-accessible" tabindex="-1">
                                                             <option value="">Chọn tỉnh/thành phố</option>
-                                                            <option value="Hà Nội">Hà Nội</option>
-                                                            <option value="Hồ Chí Minh">Hồ Chí Minh</option>
+                                                            @foreach(ADDRESS as $add)
+                                                                <option value="{{$add}}">{{$add}}</option>
+                                                            @endforeach
                                                         </select>
                                                         @error('province')
                                                         <span class="error invalid-feedback">{{ $message }}</span>
@@ -91,36 +81,6 @@
                                                             <option value="1" selected>Thanh toan khi nhan hang</option>
                                                         </select>
                                                     </div>
-                                                    <!---<p class="col-12 mb-4d75 form-row form-row-first validate-required woocommerce-invalid woocommerce-invalid-required-field">
-                                                        <label for="billing_first_name" class="form-label">Mã số thẻ *</label>
-                                                        <input type="text" class="input-text form-control" name="name" placeholder="" value="">
-                                                    </p>
-                                                    <p class="col-lg-4 mb-4d75 form-row form-row-wide address-field update_totals_on_change validate-required woocommerce-validated">
-                                                        <label for="billing_country" class="form-label">Tháng</label>
-                                                        <select name="billing_country"class="form-control">
-                                                            <option value="">---</option>
-                                                            <option value="AX">1</option>
-                                                            <option value="AX">2</option>
-                                                            <option value="AX">3</option>
-                                                            <option value="AX">4</option>
-                                                            <option value="AX">5</option>
-                                                        </select>
-                                                    </p>
-                                                    <p class="col-lg-4 mb-4d75 form-row form-row-wide address-field update_totals_on_change validate-required woocommerce-validated">
-                                                        <label for="billing_country" class="form-label">Năm</label>
-                                                        <select name="billing_country" id="billing_country" class="form-control">
-                                                            <option value="">---</option>
-                                                            <option value="AX">2020</option>
-                                                            <option value="AX">2021</option>
-                                                            <option value="AX">2022</option>
-                                                            <option value="AX">2023</option>
-                                                            <option value="AX">2024</option>
-                                                        </select>
-                                                    </p>
-                                                    <p class="col-lg-4 mb-4d75 form-row form-row-wide" id="billing_company_field" data-priority="30">
-                                                        <label for="billing_company" class="form-label">Mã CVV</label>
-                                                        <input type="text" class="input-text form-control" name="phone_number">
-                                                    </p>-->
                                                 </div>
                                             </div>
                                         </div>
@@ -129,23 +89,17 @@
                                     <div id="order_review" class="col-md-6 col-lg-5 col-xl-4 woocommerce-checkout-review-order">
                                         <div id="checkoutAccordion" class="border border-gray-900 bg-white mb-5">
                                             <div class="p-4d875 border">
-                                                <div id="checkoutHeadingOnee" class="checkout-head">
-                                                    <a href="https://demo2.madrasthemes.com/bookworm-html/redesigned-octo-fiesta/html-demo/shop/checkout.html#" class="text-dark d-flex align-items-center justify-content-between collapsed" data-toggle="collapse" data-target="#checkoutCollapseOnee" aria-expanded="false" aria-controls="checkoutCollapseOnee">
+                                                <div class="checkout-head">
+                                                    <a href="#" class="text-dark d-flex align-items-center justify-content-between collapsed" aria-expanded="true">
                                                         <h3 class="checkout-title mb-0 font-weight-medium font-size-3">Danh sách sản phẩm</h3>
-                                                        <svg class="mins" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="15px" height="2px">
-                                                            <path fill-rule="evenodd" fill="rgb(22, 22, 25)" d="M0.000,-0.000 L15.000,-0.000 L15.000,2.000 L0.000,2.000 L0.000,-0.000 Z"></path>
-                                                        </svg>
-                                                        <svg class="plus" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="15px" height="15px">
-                                                            <path fill-rule="evenodd" fill="rgb(22, 22, 25)" d="M15.000,8.000 L9.000,8.000 L9.000,15.000 L7.000,15.000 L7.000,8.000 L0.000,8.000 L0.000,6.000 L7.000,6.000 L7.000,-0.000 L9.000,-0.000 L9.000,6.000 L15.000,6.000 L15.000,8.000 Z"></path>
-                                                        </svg>
                                                     </a>
                                                 </div>
-                                                <div id="checkoutCollapseOnee" class="mt-4 checkout-content collapse" aria-labelledby="checkoutHeadingOnee" data-parent="#checkoutAccordion" style="">
+                                                <div id="checkoutCollapseOnee" class="mt-4 checkout-content collapse-show" aria-labelledby="checkoutHeadingOnee" data-parent="#checkoutAccordion" style="">
                                                     <table class="shop_table woocommerce-checkout-review-order-table">
                                                         <thead class="d-none">
                                                         <tr>
-                                                            <th class="product-name">Product</th>
-                                                            <th class="product-total">Total</th>
+                                                            <th class="product-name">Sản phẩm</th>
+                                                            <th class="product-total">Tổng</th>
                                                         </tr>
                                                         </thead>
                                                         <tbody>
@@ -158,7 +112,7 @@
                                                                 {{$product_cart->title}}&nbsp; <strong class="product-quantity">× {{$product_cart->quantity}}</strong>
                                                             </td>
                                                             <td class="product-total">
-                                                                <span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">VND</span>{{$product_cart->price*$product_cart->quantity}}</span>
+                                                                <span class="woocommerce-Price-amount amount">{{\App\Helpers\format_currency($product_cart->price*$product_cart->quantity)}}</span>
                                                             </td>
                                                             <?php
                                                                 $total += $product_cart->price*$product_cart->quantity;
@@ -166,16 +120,6 @@
                                                         </tr>
                                                         @endforeach
                                                         </tbody>
-                                                        <tfoot class="d-none">
-                                                        <tr class="cart-subtotal">
-                                                            <th>Subtotal</th>
-                                                            <td><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">£</span>97.99</span></td>
-                                                        </tr>
-                                                        <tr class="order-total">
-                                                            <th>Total</th>
-                                                            <td><strong><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">£</span>97.99</span></strong> </td>
-                                                        </tr>
-                                                        </tfoot>
                                                     </table>
                                                 </div>
                                             </div>
@@ -184,7 +128,7 @@
                                                     <tbody>
                                                     <tr class="order-total">
                                                         <th>Tổng</th>
-                                                        <td data-title="Total"><strong><span class="woocommerce-Price-amount amount"><span class="woocommerce-Price-currencySymbol">VND</span>{{$total}}</span></strong> </td>
+                                                        <td data-title="Total"><strong><span class="woocommerce-Price-amount amount">{{ \App\Helpers\format_currency($total)}}</span></strong> </td>
                                                     </tr>
                                                     </tbody>
                                                 </table>

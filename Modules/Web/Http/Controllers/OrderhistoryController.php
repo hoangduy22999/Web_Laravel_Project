@@ -13,8 +13,8 @@ use Session;
 class OrderhistoryController extends WebBaseController
 {
     public function order_history(){
-        $order = DB::table('orders')->orderby('id', 'desc')->get();
-        return view('web::order_history.order_history')->with('order', $order);
+        $orders = DB::table('orders')->orderby('id', 'desc')->get();
+        return view('web::order_history.order_history')->with('orders', $orders);
     }
 
     public function remove_order($order_id){
@@ -31,7 +31,6 @@ class OrderhistoryController extends WebBaseController
             DB::table('warehouses')->where('product_id', $product_id)->update(['quantity'=>$quantity_new]);
 
         }
-        DB::table('order_lines')->where('order_id', $order_id)->delete();
         DB::table('orders')->where('id', $order_id)->update(['order_status'=>0]);
 
 
@@ -41,8 +40,8 @@ class OrderhistoryController extends WebBaseController
 
     public function view_ordered($ordered_id){
         $order_lines = DB::table('order_lines')->join('products', 'order_lines.product_id', '=', 'products.id')->where('order_lines.order_id', $ordered_id)->get();
-        $order = DB::table('orders')->where('id', $ordered_id)->get();
-        return view('web::order_history.view_ordered')->with('order_lines', $order_lines)->with('order', $order);
+        $orders = DB::table('orders')->where('id', $ordered_id)->get();
+        return view('web::order_history.view_ordered')->with('order_lines', $order_lines)->with('orders', $orders);
     }
 }
 
