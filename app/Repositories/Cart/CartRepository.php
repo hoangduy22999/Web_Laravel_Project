@@ -45,4 +45,8 @@ class CartRepository extends BaseRepository implements CartInterface
     function getQuantityProductInCart($userId, $productId){
         return $this->_model->where(['user_id' => $userId, 'product_id' => $productId])->pluck('quantity')->first();
     }
+
+    function clearCart($userId) {
+        return $this->_model->where(['user_id' => $userId])->delete();
+    }
 }

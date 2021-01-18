@@ -104,7 +104,7 @@
                 type:'get',
                 data: {
                     category_id: category_id,
-                    old_data: {!! json_encode(old('properties')) !!}
+                    old_data: {!! json_encode(old('properties', '')) !!}
                 },
                 success:function (result){
                     $('#other-property').html(result.propertyForm);
