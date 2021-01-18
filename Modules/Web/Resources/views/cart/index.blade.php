@@ -159,6 +159,7 @@
                         totalAmount = totalAmount - quantity * price;
                         $('#total-amount').html(formatPrice(totalAmount));
                         $('#cart-item').html(result.cartItem);
+                        $('#qtyInCart').html(parseInt($('#qtyInCart').text()) - 1);
                     } else {
                         alert(result.message);
                     }
@@ -192,7 +193,7 @@
                     if(result.status) {
                         alert(result.message);
                     } else {
-                        alert(result.message.toString());
+                        alert(result.message.join("\n"));
                     }
                 },
             });

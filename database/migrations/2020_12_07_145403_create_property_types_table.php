@@ -19,6 +19,7 @@ class CreatePropertyTypesTable extends Migration
             $table->string('property_name');
             $table->integer('filterable')->default(0);
             $table->integer('sort');
+            $table->softDeletes();
             $table->timestamps();
         });
     }

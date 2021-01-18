@@ -115,7 +115,7 @@
                 "paging": true,
                 "lengthChange": false,
                 "autoWidth": false,
-                "pageLength": "25",
+                "pageLength": 15,
                 "responsive": true,
                 "order": [[0, 'asc']],
                 "select": {
@@ -210,9 +210,11 @@
                         "render": ( data, type, row ) => {
                             let editLink = "{{route('admin.product.edit', ':id')}}";
                             editLink = editLink.replace(':id', row.id);
+                            let detailLink = "{{route('admin.product.detail', ':id')}}";
+                            detailLink = detailLink.replace(':id', row.id);
                             return `
                                 <a type='button' href="${editLink}" class='btn btn-outline-warning btn-sm'><i class="fas fa-edit"></i></a>
-                                <a type='button' href="#" class='btn btn-outline-success btn-sm'><i class="fas fa-eye"></i></a>
+                                <a type='button' href="${detailLink}" class='btn btn-outline-success btn-sm'><i class="fas fa-eye"></i></a>
                             `;
                         },
                     },

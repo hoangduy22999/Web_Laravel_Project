@@ -27,8 +27,7 @@
                             <div class="pt-5 pt-lg-8 pl-md-5 pl-lg-9 space-bottom-2 space-bottom-lg-3 mb-xl-1">
                                 <h6 class="font-weight-medium font-size-7 ml-lg-1 mb-lg-8 pb-xl-1">Thông tin cá nhân</h6>
                                 <div class="ml-lg-1 mb-4">
-                                    <span class="font-size-22">Hello alitfn58</span>
-                                    <span class="font-size-2"> (not alitfn58? <a class="link-black-100" href="#">Log out</a>)</span>
+                                    <span class="font-size-22">Hello {{$user->name}}</span>
                                 </div>
                                 <div class="mb-4">
                                     <p class="mb-0 font-size-2 ml-lg-1 text-gray-600">From your account dashboard you can view your <span class="text-dark">recent orders,</span> manage your <span class="text-dark">shipping and billing addresses,</span> and edit your <span class="text-dark">password and account details.</span></p>

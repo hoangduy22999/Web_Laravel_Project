@@ -44,7 +44,7 @@
                                                         <tbody>
                                                         @foreach($product->properties as $property)
                                                         <tr>
-                                                            <th>{{$property->property_type->property_name}}</th>
+                                                            <th width="25%">{{$property->property_type->property_name}}</th>
                                                             <td>{{$property->value}}</td>
                                                         </tr>
                                                         @endforeach
